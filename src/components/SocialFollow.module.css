@@ -1,0 +1,29 @@
+@import '../styles/custom-media.css';
+@import '../styles/custom-properties.css';
+
+.socialContainer {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0 35%;
+}
+.icon {
+    color: var(--color-gray)
+}
+.icon:hover {
+    color: var(--color-dark-gray)
+}
+@media (--media-max-large) {
+    .socialContainer {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 0 25%;
+    }
+   
+}@media (--media-max-medium) {
+    .socialContainer {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 0 15%;
+    }
+   
+}

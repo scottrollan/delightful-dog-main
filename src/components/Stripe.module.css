@@ -1,0 +1,15 @@
+@import '../styles/custom-media.css';
+@import '../styles/custom-properties.css';
+
+
+.stripe1 {
+    width: 100%;
+    min-height: 40px;
+    background: repeating-linear-gradient(
+      45deg,
+      var(--delightful-bright),
+      var(--delightful-bright) 8px,
+      var(--color-white) 0px,
+      var(--color-white) 30px
+    )
+}
