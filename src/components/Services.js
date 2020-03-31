@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import ReactHtmlParser from "react-html-parser";
 import styles from "./Services.module.css";
 import Stripe from "./Stripe"
-import { jsxAttribute } from "@babel/types";
 
 class Services extends Component {
   state = {
@@ -119,7 +118,7 @@ class Services extends Component {
               </div>
               <div id={styles.wordsDivServices}>
                 <h3 style={{ marginTop: '0' }}>{s.name}</h3>
-                {s.subtitle != '' ? <h5>{s.subtitle}</h5> : null}
+                {s.subtitle !== '' ? <h5>{s.subtitle}</h5> : null}
                 <span>{ReactHtmlParser(s.description)}</span>
               </div>
             </div>

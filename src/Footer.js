@@ -4,7 +4,7 @@ import Link from "next/link";
 import { withRouter } from "next/router";
 import styles from "./Footer.module.css";
 import SimpleBlockContent from "./SimpleBlockContent";
-import SocialFollow from "./sections/SocialFollow"
+import SocialFollow from "./components/SocialFollow"
 
 function Footer(props) {
   const { navItems, text, router } = props;

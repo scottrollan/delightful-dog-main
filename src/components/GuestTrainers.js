@@ -178,7 +178,7 @@ class GuestTrainers extends Component {
           return (
             <div
               key={refId}
-              className={index % 2 == 0 ? styles.picLeft : styles.picRight}
+              className={index % 2 === 0 ? styles.picLeft : styles.picRight}
             >
               <img src={src} alt="" className={styles.pic} />
               <div id={refId} className={`${styles.words} ${styles.condensed}`}>
@@ -190,7 +190,7 @@ class GuestTrainers extends Component {
                 id={`readMore${refId}`}
                 value={refId}
                 onClick={event => this.readMore(event)}
-                className={index % 2 == 0 ? styles.btnRight : styles.btnLeft}
+                className={index % 2 === 0 ? styles.btnRight : styles.btnLeft}
               >
                 Read More
               </button>
@@ -198,7 +198,7 @@ class GuestTrainers extends Component {
                 id={`seeLess${refId}`}
                 value={refId}
                 onClick={event => this.seeLess(event)}
-                className={index % 2 == 0 ? styles.btnRight : styles.btnLeft}
+                className={index % 2 === 0 ? styles.btnRight : styles.btnLeft}
                 style={{ display: "none" }}
               >
                 See Less

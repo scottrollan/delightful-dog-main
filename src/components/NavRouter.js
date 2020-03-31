@@ -1,54 +1,9 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Home from "./Landing";
-import About from "./Trainers";
-import Services from "./Services";
-import Contact from "./ContactUs";
-import Training from "./Training";
-import GuestTrainers from "./GuestTrainers";
+import React from "react";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
-class NavRouter extends Component {
-  state = {
-    routes: [
-      {
-        toPath: "/",
-        nav: "Home",
-        page: <Home />
-      },
-      {
-        toPath: "/about",
-        nav: "About",
-        page: <About />
-      },
-      {
-        toPath: "/services",
-        nav: "Services",
-        page: <Services />
-      },
-      {
-        toPath: "/training",
-        nav: "Training",
-        page: <Training />
-      },
-      {
-        toPath: "/guestTrainers",
-        nav: "Guest Trainers",
-        page: <GuestTrainers />
-      },
-      {
-        toPath: "/training",
-        nav: "Training",
-        page: <Training />
-      },
-      {
-        toPath: "/contact",
-        nav: "Contact",
-        page: <Contact />
-      }
-    ]
-  };
-  render() {
-    const routes = this.state.routes;
+
+const NavRouter = (props) => {
+    const routes = props.routes
     return (
       <Router>
         <div>
@@ -65,32 +20,12 @@ class NavRouter extends Component {
               })}
             </ul>
           </nav>
+          </div>
 
-          <Switch>
-            {routes.map(p => {
-              return (
-                <Route key={p.nav} path={p.toPath}>
-                  {p.page}
-                </Route>
-              );
-            })}
-          </Switch>
-        </div>
       </Router>
     );
-  }
+  
 }
 
 export default NavRouter;
 
-// Home = () => {
-//   return <Home />;
-// }
-
-// About = () => {
-//   return <About />;
-// }
-
-// Services = () => {
-//   return <Services />;
-// }

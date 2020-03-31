@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styles from "./Trainers.module.css";
-// import ReactHtmlParser from "react-html-parser";
+import ReactHtmlParser from "react-html-parser";
 
 class Trainers extends Component {
   state = {
@@ -46,18 +46,18 @@ class Trainers extends Component {
           const refId = t.name.toLowerCase() + index;
           const src = t.photo
           return (
-            <div key={t._id} className={index % 2 == 0 ? styles.picLeft : styles.picRight}>
+            <div key={refId} className={index % 2 === 0 ? styles.picLeft : styles.picRight}>
               <img src={src} alt="" className={styles.pic} />
               <div id={refId} className={`${styles.words} ${styles.condensed}`}>
                 <h2 className={styles.h2}>{t.name}</h2>
                 <div id={`mask${refId}`} className={styles.mask}></div>
-                {/* <span>{ReactHtmlParser(t.bio)}</span> */}
+                <span>{ReactHtmlParser(t.bio)}</span>
               </div>
               <button
                 id={`readMore${refId}`}
                 value={refId}
                 onClick={event => this.readMore(event)}
-                className={index % 2 == 0 ? styles.btnRight : styles.btnLeft}
+                className={index % 2 === 0 ? styles.btnRight : styles.btnLeft}
               >
                 Read More
               </button>
@@ -65,7 +65,7 @@ class Trainers extends Component {
                 id={`seeLess${refId}`}
                 value={refId}
                 onClick={event => this.seeLess(event)}
-                className={index % 2 == 0 ? styles.btnRight : styles.btnLeft}
+                className={index % 2 === 0 ? styles.btnRight : styles.btnLeft}
                 style={{ display: 'none' }}
               >
                 See Less

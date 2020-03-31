@@ -1,7 +1,6 @@
 @import "./styles/custom-media.css";
 @import "./styles/custom-properties.css";
 
-
 #headerSection {
   display: flex;
   flex-direction: column;
@@ -13,17 +12,13 @@
   padding: 0 0 0 1em;
   margin: 0;
   box-sizing: border-box;
-  @media (--media-max-medium){
-    flex-direction: column;
-    justify-content: center;
-  }
 }
 
 .topInfo > div {
   display: flex;
-  @media (--media-max-medium){
+  /* @media (--media-max-medium) {
     width: 100%;
-  }
+  } */
 }
 #infoDiv {
   justify-content: flex-start;
@@ -32,22 +27,23 @@
   justify-content: flex-end;
 }
 
-.contactBtn, .icon {
+.contactBtn,
+.icon {
   font-size: var(--font-base-size);
   line-height: var(--font-base-line-height);
   text-decoration: none;
   color: var(--delightful-neutral);
   padding: 1rem 0.6rem;
-  @media (--media-max-large){
+  @media (--media-max-large) {
     font-size: var(--font-small-size);
     line-height: var(--font-base-small-height);
-    padding: 1rem .5rem;
+    padding: 1rem 0.5rem;
   }
-  @media (--media-max-medium){
+  @media (--media-max-medium) {
     font-size: var(--font-small-size);
     line-height: var(--font-base-small-height);
   }
-  @media (--media-max-small){
+  @media (--media-max-small) {
     font-size: var(--font-micro-size);
     padding: 1rem 0.2rem;
   }
@@ -56,16 +52,17 @@
   color: var(--delightful-bright);
   font-size: x-large;
 }
-.contactBtn:hover, .icon:hover {
+.contactBtn:hover,
+.icon:hover {
   opacity: 0.7;
 }
 
-
-#homeTab, #blogTab {
+#homeTab,
+#blogTab {
   color: var(--delightful-neutral);
   text-decoration: none;
   text-transform: uppercase;
-  padding: 1rem 1.5rem; 
+  padding: 1rem 1.5rem;
   height: 100%;
 }
 
@@ -74,19 +71,16 @@
 }
 
 #tabDiv:hover > #homeTab {
-    background-color: var(--color-white);
+  background-color: var(--color-white);
 }
 
 #tabDiv #homeTab:hover {
-    background-color: var(--delightful-bright);
+  background-color: var(--delightful-bright);
 }
 
 #blogTab:hover {
   background-color: var(--delightful-bright);
 }
-
-
-
 
 .root {
   position: relative;
@@ -119,68 +113,27 @@
 }
 #logo {
   max-width: 100%;
-  @media (--media-max-medium) {
-    display: none;
-  }
 }
 #logoAlt {
   display: none;
-  @media (--media-max-medium) {
-    display: inherit;
-    max-width: 100%;
-  }
+
 }
 
 #textHolder {
   display: none;
-  @media (--media-max-medium){
-    display: inherit;
-    flex-basis: 60%;
-    margin: 0;
-    padding: 0 10%;
-    align-self: center;
-  }
 }
 .textOnly {
   max-width: 80%;
   box-sizing: border-box;
 }
-
-.nav {
-  @media (--media-max-medium) {
-    align-self: center;
-  }
-}
-
-.navItems {
+/* .nav {
+  position: relative;
+} */
+#navItems {
   padding: 0;
   margin: 0;
-
-  @media (--media-min-medium) {
-    display: flex;
-    justify-content: flex-end;
-    padding: 0 1rem;
-    align-self: flex-end;
-  }
-
-  @supports (padding-top: env(safe-area-inset-top)) {
-    padding-right: calc(env(safe-area-inset-right) + 1rem);
-  }
-
-  @media (--media-max-medium) {
-    z-index: 10;
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 100%;
-    width: 100%;
-    background-color: var(--color-black, #000000);
-    color: var(--color-white, #fff);
-
-    @nest .root[data-show-nav="true"] & {
-      display: block;
-    }
-  }
+  list-style-type: none;
+  font-size: var(--font-base-size);
 }
 
 .navItem {
@@ -189,27 +142,24 @@
   align-items: stretch;
   align-self: flex-end;
   line-height: calc(var(--font-base-line-height) * 1.5rem);
+  display: block;
+  position: relative;
+  padding: 1.5rem 0.5rem;
 
-  @nest & > a {
-    display: block;
-    position: relative;
-    padding: 1.5rem 0.5rem;
+  @media (--media-max-medium) {
+    padding: 1rem 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: right;
 
-    @media (--media-max-medium) {
-      padding: 1rem 1.5rem;
+    @nest &[data-is-active="true"]::before {
+      content: "";
       width: 100%;
-      box-sizing: border-box;
-      text-align: right;
-
-      @nest &[data-is-active="true"]::before {
-        content: "";
-        width: 100%;
-        height: 1px;
-        position: absolute;
-        bottom: 0.5rem;
-        left: 0;
-        background-color: var(--color-white, #fff);
-      }
+      height: 1px;
+      position: absolute;
+      bottom: 0.5rem;
+      left: 0;
+      background-color: var(--color-white, #fff);
     }
   }
 
@@ -236,18 +186,108 @@
   padding: 0 1.5rem;
   outline: none;
   box-sizing: border-box;
-
-  @media (--media-min-medium) {
-    display: none;
-  }
 }
 
 .hamburgerIcon {
   font-size: calc(var(--font-base-line-height) * 1.5rem);
   display: block;
   margin-top: 0;
+}
 
-  @media (--media-min-medium) {
+
+@media screen and (max-width: 899px) {
+  /* LARGE */
+  .contactBtn,
+  .icon {
+    font-size: var(--font-small-size);
+    line-height: var(--font-base-small-height);
+    padding: 1rem 0.5rem;
+  }
+}
+@media screen and (min-width: 675px) {
+  /* MEDIUM minimum */
+  .showNavButton {
     display: none;
   }
+  #navItems {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 0 1rem;
+    align-self: flex-end;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    font-size: var(--font-base-size);
+  }
+}
+@media screen and (max-width: 674px) {
+  /* MEDIUM */
+  .topInfo {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .topInfo > div {
+    width: 100%;
+  }
+  .contactBtn,
+  .icon {
+    font-size: var(--font-small-size);
+    line-height: var(--font-base-small-height);
+  }
+  #homeTab,
+  #blogTab {
+    padding: 0.5rem 1rem;
+  }
+  #logo {
+    display: none;
+  }
+  #logoAlt {
+    display: inherit;
+    max-width: 100%;
+  }
+  #textHolder {
+    display: inherit;
+    flex-basis: 60%;
+    margin: 0;
+    padding: 0 10%;
+    align-self: center;
+  }
+  .nav {
+    align-self: center;
+  }
+  #navItems {
+    z-index: 10;
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    background-color: var(--color-black, #000000);
+    color: var(--color-white, #fff);
+
+    @nest .root[data-show-nav="true"] & {
+      display: block;
+    }
+  }
+  .navItem {
+    padding: 1rem 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: right;
+
+    /* @nest &[data-is-active="true"]::before {
+      content: "";
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      bottom: 0.5rem;
+      left: 0;
+      background-color: var(--color-white, #fff);
+    } */
+  }
+}
+
+@media screen and (max-width: 449px) {
+  /* SMALL */
 }

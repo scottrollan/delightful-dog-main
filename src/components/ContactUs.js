@@ -21,7 +21,7 @@ const ContactUs = () => {
       <fieldset className={styles.fieldset}>
         <legend className={styles.legend}>Send Us A Message</legend>
         <form
-          classname={styles.form}
+          className={styles.form}
           name="contact"
           method="post"
           data-netlify="true"

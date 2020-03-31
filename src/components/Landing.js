@@ -11,8 +11,8 @@ const Landing = () => {
       <div className={styles.flexDiv}>
         <img src={src} alt="" className={styles.img} />
         <div className={styles.heroContainer}>
-          <h1>Effective Dog Training.</h1>
-          <h1> Real Behavior Solutions.</h1>
+          <h1 className={styles.h1}>Effective Dog Training.</h1>
+          <h1 className={styles.h1}> Real Behavior Solutions.</h1>
           <p classname={styles.centerThis}>
             <a className={styles.button} href="/services">
               Our Services
