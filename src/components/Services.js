@@ -9,7 +9,7 @@ class Services extends Component {
       {
         name: "Training",
         subtitle: "",
-        photo: "https://cdn.sanity.io/images/iln0s9zc/production/2f88f9e0a86f0d9b1cb59c90c22023409c21a6be-466x588.jpg?h=500&fit=max",
+        photo: "https://cdn.sanity.io/images/iln0s9zc/production/f48231c126126c00341705ab78107f17ac72edac-840x1040.jpg",
         description: `<ul style={{ listStyleType: 'square' }}>Board & Train, includes one-on-one training with dog in our facility, with an evaluation and post training session.<li>One or Two Week Board and Train</li><li>Day Training / Exercise Daycare</li><li>Group Classes</li><li>One on One Sessions (On and Off Site)</li><li>Canine Good Citizen Classes</li><li>Behavior Modification Sessions (4 Sessions On Site)</li></ul>`
       },
       {
@@ -26,8 +26,8 @@ class Services extends Component {
       },
       {
         name: "Additional Services",
-        subtitle: "https://cdn.sanity.io/images/iln0s9zc/production/5f6ee215d6966363d71b6bad09b278cc355d8110-1000x650.jpg?h=500&fit=max",
-        photo: "",
+        subtitle: "",
+        photo: "https://cdn.sanity.io/images/iln0s9zc/production/5f6ee215d6966363d71b6bad09b278cc355d8110-1000x650.jpg",
         description: `<ul><li>Additional playtime</li><li>Fitness Session</li><li>Stuffed Kongs & Treats</li><li>Bedtime Story</li><li>Holiday Meals</li>`
       },
       {
@@ -106,7 +106,8 @@ class Services extends Component {
   render() {
     const services = this.state.services
     return (
-      <section className={styles.containerServices}>
+      <section>
+        <div className={styles.containerServices}>
         {services.map((s, index) => {
           const ref = s.name.split(' ')
           const refId = ref.join('').toLowerCase() + index
@@ -124,6 +125,7 @@ class Services extends Component {
             </div>
           );
         })}
+        </div>
         <Stripe />
       </section>
     );

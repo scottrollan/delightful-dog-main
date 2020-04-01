@@ -126,9 +126,9 @@
   max-width: 80%;
   box-sizing: border-box;
 }
-/* .nav {
-  position: relative;
-} */
+.nav {
+  align-self: center;
+}
 #navItems {
   padding: 0;
   margin: 0;
@@ -139,11 +139,9 @@
 .navItem {
   display: flex;
   white-space: nowrap;
-  align-items: stretch;
   align-self: flex-end;
+  justify-content: flex-end;
   line-height: calc(var(--font-base-line-height) * 1.5rem);
-  display: block;
-  position: relative;
   padding: 1.5rem 0.5rem;
 
   @media (--media-max-medium) {
@@ -161,10 +159,6 @@
       left: 0;
       background-color: var(--color-white, #fff);
     }
-  }
-
-  @nest .root[data-show-nav="true"] & > a[data-is-active="true"]::before {
-    display: none;
   }
 
   @media (--media-min-medium) {
@@ -249,7 +243,7 @@
   #textHolder {
     display: inherit;
     flex-basis: 60%;
-    margin: 0;
+    margin: 8px 0 0 0;
     padding: 0 10%;
     align-self: center;
   }
@@ -258,34 +252,22 @@
   }
   #navItems {
     z-index: 10;
-    display: none;
+    /* display: none; */
     position: absolute;
     left: 0;
     top: 100%;
     width: 100%;
     background-color: var(--color-black, #000000);
     color: var(--color-white, #fff);
-
-    @nest .root[data-show-nav="true"] & {
-      display: block;
-    }
   }
+
   .navItem {
     padding: 1rem 1.5rem;
     width: 100%;
     box-sizing: border-box;
     text-align: right;
-
-    /* @nest &[data-is-active="true"]::before {
-      content: "";
-      width: 100%;
-      height: 1px;
-      position: absolute;
-      bottom: 0.5rem;
-      left: 0;
-      background-color: var(--color-white, #fff);
-    } */
   }
+
 }
 
 @media screen and (max-width: 449px) {

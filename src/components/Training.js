@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ReactHtmlParser from "react-html-parser";
 import styles from "./Training.module.css";
+import Stripe from "./Stripe";
+import DogDivider from './DogDivider'
 
 class Training extends Component {
   state = {
@@ -93,23 +95,30 @@ class Training extends Component {
 
   render() {
     const src1 =
-      "https://cdn.sanity.io/images/xavhj4r4/production/f48231c126126c00341705ab78107f17ac72edac-840x1040.jpg?h=250&fit=max";
+      "https://cdn.sanity.io/images/iln0s9zc/production/117a1adf878ad66f83abc8ac4d9b0afddbd29a32-3234x1796.jpg";
     const src2 =
-      "https://cdn.sanity.io/images/xavhj4r4/production/db860cf20e504803b9034a6521f5d261b0f72ed1-480x768.webp?h=250&fit=max";
-      const courses = this.state.courses
+      "https://cdn.sanity.io/images/iln0s9zc/production/2f88f9e0a86f0d9b1cb59c90c22023409c21a6be-466x588.jpg";
+
+    const courses = this.state.courses;
     return (
-      <section className={styles.container}>
-        <img src={src1} alt="" className={styles.topImage} />
-        <div className={styles.flexWrapper}>
+      <section>
+        <Stripe />
+        <div className={styles.container}>
+          <img src={src1} alt="" className={styles.topImage} />
           {courses.map((s, index) => (
-            <div key={index}>
+            <div key={index} style={{ marginBottom: index === courses.length - 1 ? '40px' : '0.5em'  }}>
               <h3 style={{ marginTop: "0" }}>{s.name}</h3>
               <h5>{s.subtitle}</h5>
               <span>{ReactHtmlParser(s.description)}</span>
+              <div style={{ display: index === courses.length - 1 ? 'none' : 'inherit'}}><DogDivider /></div>
             </div>
           ))}
+          <div className={styles.bottomImageHolder}>
+          <img src={src2} className={styles.bottomImage} alt="" />
+
+          </div>
         </div>
-        <img src={src2} className={styles.bottomImage} alt="" />
+        <Stripe />
       </section>
     );
   }

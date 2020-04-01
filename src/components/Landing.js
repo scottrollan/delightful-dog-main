@@ -13,7 +13,7 @@ const Landing = () => {
         <div className={styles.heroContainer}>
           <h1 className={styles.h1}>Effective Dog Training.</h1>
           <h1 className={styles.h1}> Real Behavior Solutions.</h1>
-          <p classname={styles.centerThis}>
+          <p className={styles.centerThis}>
             <a className={styles.button} href="/services">
               Our Services
             </a>{" "}

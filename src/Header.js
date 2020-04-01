@@ -14,23 +14,47 @@ import logoAltSrc from "./assets/dogOnly.png";
 import textOnly from "./assets/delightfulText.png";
 
 class Header extends Component {
-  state = { showNav: false };
+  state = {
+    showNav: true,
+    smallWindow: false
+  };
 
   hideMenu = () => {
     this.setState({ showNav: false });
   };
 
   handleMenuToggle = () => {
-    const x = document.getElementById(styles.navItems);
-      if (x.style.display === 'none' || x.style.display === '') {
-        x.style.display = "inherit";
-      } else {
-        x.style.display = "none";
-      }
+    const { showNav, smallWindow } = this.state;
+    this.setState({ 
+      showNav: !showNav,
+    });
+    console.log(showNav, smallWindow)
   };
 
+  reportWindowSize = () => {
+    if (window.innerWidth >= 675) {
+      this.setState({
+        showNav: true,
+        smallWindow: false
+      });
+    } else {
+      this.setState({
+        showNav: false,
+        smallWindow: true
+      });
+    }
+  };
+  componentWillMount() {
+    if(window.innerWidth < 675){
+      this.setState({ smallWindow: true })
+    }
+    document.getElementsByTagName("BODY")[0].onresize = () => {
+      this.reportWindowSize();
+    };
+  }
+
   render() {
-    const { showNav } = this.state;
+    const { showNav, smallWindow } = this.state;
     const navItems = this.props.navItems;
 
     return (
@@ -86,7 +110,6 @@ class Header extends Component {
           <div id={styles.tabDiv}>
             <a
               href="https://sanity-delightful-dog-main.netlify.com/"
-              a
               id={styles.homeTab}
             >
               Home
@@ -97,7 +120,7 @@ class Header extends Component {
             </a>
           </div>
         </div>
-        <div className={styles.root} data-show-nav={showNav}>
+        <div className={styles.root}  style={{ marginBottom: showNav && smallWindow ? '475px' : '0' }}>
           <h1 className={styles.branding}>
             <a className={styles.logoHolder} href="/">
               <img id={styles.logo} src={logoDefault} alt="" />
@@ -120,19 +143,21 @@ class Header extends Component {
                 icon={faBars}
               ></FontAwesomeIcon>
             </button>
-            <ul id={styles.navItems} style={{ dispaly: 'flex'}}>
-              {navItems.map((item, index) => {
-                const { toPath, nav } = item;
-                const _id = item.nav.toLowerCase() + index;
-                return (
-                  <li key={_id}>
-                    <Link to={toPath} className={styles.navItem}>
-                      {nav}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
+            {this.state.showNav && (
+              <ul id={styles.navItems}>
+                {navItems.map((item, index) => {
+                  const { toPath, nav } = item;
+                  const _id = item.nav.toLowerCase() + index;
+                  return (
+                    <li key={_id}>
+                      <Link to={toPath} className={styles.navItem} onClick={() => this.reportWindowSize()}>
+                        {nav}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
           </nav>
         </div>
       </section>

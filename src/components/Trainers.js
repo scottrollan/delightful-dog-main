@@ -7,12 +7,12 @@ class Trainers extends Component {
     trainers: [
       {
         name: 'Melony',
-        photo: "https://cdn.sanity.io/images/iln0s9zc/production/a6eeb2925cea14fdba48fe5f60994ce53afcd71f-600x600.jpg?h=800&fit=max",
+        photo: "https://cdn.sanity.io/images/iln0s9zc/production/a6eeb2925cea14fdba48fe5f60994ce53afcd71f-600x600.jpg",
         bio: "<p>Melony has been a professional dog trainer and training instructor for over 8 years. Using proven positive training and behavior-modification techniques, she works to facilitate a happy, healthy relationship between dogs and their human families.</p><ul style={{ listStyletype: 'square' }}><strong>Certifications, licenses, and memberships include:</strong></ul><li>CPDT-KA (Certified Professional Dog Trainer-Knowledge Assessed)</li><li>Certified Canine Water Therapist</li><li>AKC Canine Good Citizen Evaluator</li><li>S.T.A.R. Puppy Evaluator</li><li>Red Cross Certified in Dog and Cat CPR and First Aid</li><li>Certified Massage Therapist</li><li>Licensed VSPDT (Victoria Stilwell Positively Dog Trainer)</li><li>Licensed Presenter: Dogs and Storks, Dogs and Baby Connection, and Dogs and Toddlers</li><li>Member, Pet Professional Guild</li><li>Member, The Association of Professional Dog Trainers</li><li>Member, Certification Council for Professional Dog Trainers</li></ul><p></p>She shares her home with her husband, David, and their 2 Cavalier King Charles Spaniels, an Old English Mastiff, an Australian shepherd and 2 wonderful cats.</p>"
       },
       {
         name: "Biya",
-        photo: "https://cdn.sanity.io/images/iln0s9zc/production/d2a890d2f6c0931fa45eb03ca2308813205069e1-359x394.jpg?h=800&fit=max",
+        photo: "https://cdn.sanity.io/images/iln0s9zc/production/d2a890d2f6c0931fa45eb03ca2308813205069e1-359x394.jpg",
         bio: '<p>Biya was raised overseas & worked at a private zoo as a teenager. She is a licensed vet technician with knowledge of pet First Aid & pet CPR. She is actively involved with local pet rescues, Ahimsa House & does other volunteer work. She has her own personal "zoo" at her home. She was as a General Manager at a large daycare facility- a position she held for 9 years. Before partnering with Delightful Dog, she owned & operated PAWtopia Professional Pet Sitting.</p>'
 
       }
