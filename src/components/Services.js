@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactHtmlParser from "react-html-parser";
 import styles from "./Services.module.css";
 import Stripe from "./Stripe"
+// import bannerPic from '../assets/blueEyedAussie.jpg'
 
 class Services extends Component {
   state = {
@@ -10,7 +11,7 @@ class Services extends Component {
         name: "Training",
         subtitle: "",
         photo: "https://cdn.sanity.io/images/iln0s9zc/production/f48231c126126c00341705ab78107f17ac72edac-840x1040.jpg",
-        description: `<ul style={{ listStyleType: 'square' }}>Board & Train, includes one-on-one training with dog in our facility, with an evaluation and post training session.<li>One or Two Week Board and Train</li><li>Day Training / Exercise Daycare</li><li>Group Classes</li><li>One on One Sessions (On and Off Site)</li><li>Canine Good Citizen Classes</li><li>Behavior Modification Sessions (4 Sessions On Site)</li></ul>`
+        description: `Board & Train, includes one-on-one training with your dog in our facility, with an evaluation and post training session.<ul style="list-style-type: square; list-style-position: insided;"><li>One or Two Week Board and Train</li><li>Day Training / Exercise Daycare</li><li>Group Classes</li><li>One on One Sessions (On and Off Site)</li><li>Canine Good Citizen Classes</li><li>Behavior Modification Sessions (4 Sessions On Site)</li></ul>`
       },
       {
         name: "Boarding",
@@ -28,7 +29,7 @@ class Services extends Component {
         name: "Additional Services",
         subtitle: "",
         photo: "https://cdn.sanity.io/images/iln0s9zc/production/5f6ee215d6966363d71b6bad09b278cc355d8110-1000x650.jpg",
-        description: `<ul><li>Additional playtime</li><li>Fitness Session</li><li>Stuffed Kongs & Treats</li><li>Bedtime Story</li><li>Holiday Meals</li>`
+        description: `<ul style="list-style-type: square; list-style-position: insided;"><li>Additional playtime</li><li>Fitness Session</li><li>Stuffed Kongs & Treats</li><li>Bedtime Story</li><li>Holiday Meals</li>`
       },
       {
         name: "Grooming",
@@ -76,7 +77,7 @@ class Services extends Component {
   //         if (d.children[0].text == "") {
   //           return;
   //         } else if (bulleted && !ulCreated) {
-  //           const str = `<ul><li>${text}</li>`;
+  //           const str = `<ul style="list-style-type: square; list-style-position: insided;"><li>${text}</li>`;
   //           blurb = blurb.concat(str);
   //           ulCreated = true;
   //         } else if(bulleted && ulCreated) {
@@ -107,6 +108,12 @@ class Services extends Component {
     const services = this.state.services
     return (
       <section>
+        <div className={styles.h2Wrapper}>
+        <h2 className={styles.h2Middle}>
+          The comfort, safety and well-being of your dog is our only priority.
+        </h2>
+      </div>
+      <Stripe />
         <div className={styles.containerServices}>
         {services.map((s, index) => {
           const ref = s.name.split(' ')
@@ -114,13 +121,13 @@ class Services extends Component {
           const src = s.photo;
           return (
             <div className={styles.flexWrapperServices} key={refId}>
-              <div id={styles.imageDivServices}>
-                <img src={src} alt="" className={styles.imgServices} />
-              </div>
               <div id={styles.wordsDivServices}>
                 <h3 style={{ marginTop: '0' }}>{s.name}</h3>
                 {s.subtitle !== '' ? <h5>{s.subtitle}</h5> : null}
                 <span>{ReactHtmlParser(s.description)}</span>
+              </div>
+              <div id={styles.imageDivServices}>
+                <img src={src} alt="" className={styles.imgServices} />
               </div>
             </div>
           );

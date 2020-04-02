@@ -8,6 +8,9 @@ import ContactUs from "./components/ContactUs";
 import Training from "./components/Training";
 import GuestTrainers from "./components/GuestTrainers";
 import Header from './Header'
+import Footer from './Footer'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 class App extends Component {
   state = {
@@ -52,6 +55,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+
         <Router>
         <Header navItems={this.state.routes}/>
           <Switch>
@@ -64,6 +68,7 @@ class App extends Component {
             <Route path="/guestTrainers" component={GuestTrainers} />
           </Switch>
         </Router>
+        <Footer />
       </div>
     );
   }

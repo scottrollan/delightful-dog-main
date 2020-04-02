@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReactHtmlParser from "react-html-parser";
 import styles from "./Training.module.css";
 import Stripe from "./Stripe";
-import DogDivider from './DogDivider'
+import DogDivider from "./DogDivider";
 
 class Training extends Component {
   state = {
@@ -101,22 +101,34 @@ class Training extends Component {
 
     const courses = this.state.courses;
     return (
-      <section>
+      <section className={styles.container}>
+        <img src={src1} alt="" className={styles.topImage} />
         <Stripe />
-        <div className={styles.container}>
-          <img src={src1} alt="" className={styles.topImage} />
-          {courses.map((s, index) => (
-            <div key={index} style={{ marginBottom: index === courses.length - 1 ? '40px' : '0.5em'  }}>
-              <h3 style={{ marginTop: "0" }}>{s.name}</h3>
-              <h5>{s.subtitle}</h5>
-              <span>{ReactHtmlParser(s.description)}</span>
-              <div style={{ display: index === courses.length - 1 ? 'none' : 'inherit'}}><DogDivider /></div>
+        <div className={styles.mapped}>
+        {courses.map((s, index) => (
+          <div
+            className={styles.course}
+            key={index}
+            style={{
+              marginBottom: index === courses.length - 1 ? "40px" : "0.5em"
+            }}
+          >
+            <h3 style={{ marginTop: "0" }}>{s.name}</h3>
+            <h5>{s.subtitle}</h5>
+            
+            <span>{ReactHtmlParser(s.description)}</span>
+            <div
+              style={{
+                display: index === courses.length - 1 ? "none" : "inherit"
+              }}
+            >
+              <DogDivider />
             </div>
-          ))}
-          <div className={styles.bottomImageHolder}>
-          <img src={src2} className={styles.bottomImage} alt="" />
-
           </div>
+        ))}
+        </div>
+        <div className={styles.bottomImageHolder}>
+          <img src={src2} className={styles.bottomImage} alt="" />
         </div>
         <Stripe />
       </section>

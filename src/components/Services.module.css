@@ -1,53 +1,61 @@
-@import '../styles/custom-media.css';
-@import '../styles/custom-properties.css';
+@import "../styles/custom-media.css";
+@import "../styles/custom-properties.css";
 
 .containerServices {
-    width: var(--wide-container);
-    margin: 0 auto;
-    max-width: 100%;
-    box-sizing: border-box;
+  width: var(--wide-container);
+  margin: 0 auto;
+  max-width: 100%;
+  box-sizing: border-box;
 }
-
+.bannerPic {
+  width: 100%;
+}
 .flexWrapperServices {
-    display: flex;
-    flex-direction: row;
-    max-width: 100%;
-    @media (--media-max-medium) {
-        flex-direction: column;
-    }
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+  @media (--media-max-medium) {
+    flex-direction: column;
+  }
 }
 
 #imageDivServices,
 #wordsDivServices {
-    padding: 1em;
-    @media (--media-max-medium) {
-        padding: 0;
-    }
+  padding: 1em;
+  @media (--media-max-medium) {
+    padding: 0;
+  }
 }
 
 #imageDivServices {
-    flex-basis: 25%;
-    align-self: flex-start;
-    box-sizing: border-box;
-    @media (--media-max-medium) {
-        width: 60%;
-        margin: 0 20%;
-    }
+  flex-basis: 25%;
+  align-self: flex-start;
+  box-sizing: border-box;
+  @media (--media-max-medium) {
+    width: 60%;
+    margin: 0 20%;
+  }
 }
 #wordsDivServices {
-    flex-basis: 70%;
-    box-sizing: border-box;
-    @media (--media-max-medium) {
-        width: 80%;
-        margin: 0 10%;
-        padding-bottom: 80px;
-    }
+  flex-basis: 70%;
+  box-sizing: border-box;
+
 }
 .imgServices {
-    width: 100%;
-    padding-top: 2em;
-    @media (--media-max-medium) {
-        width: 60%;
-        margin: 0 20%;
-    }
+  width: 100%;
+  padding-top: 2em;
+  @media (--media-max-medium) {
+    width: 60%;
+    margin: 0 20%;
+  }
+}
+
+.h2Wrapper {
+  text-align: center;
+  padding: 2em 3em;
+}
+.h2Middle {
+  color: var(--delightful-neutral);
+  font-style: italic;
+  font-family: "Courgette", cursive;
 }

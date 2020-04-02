@@ -1,0 +1,74 @@
+@import "../styles/custom-properties.css";
+
+
+.bar {
+    position: relative;
+    color: var(--color-black, #000);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between !important;
+    padding: 0;
+    width: 100%;
+    background-color: transparent;
+  }
+  
+  .branding {
+    max-width: 20%;
+    margin: 0;
+    padding: 5px 0 0 10px;
+    box-sizing: border-box;
+    align-self: center;
+  }
+  .logoHolder {
+    margin: 0;
+    padding: 4px 0;
+  }
+  #logo {
+    max-height: 80px;
+  }
+  #logoAlt {
+    display: none;
+  
+  }
+  
+  #textHolder {
+    display: none;
+  }
+  .textOnly {
+    max-width: 80%;
+    box-sizing: border-box;
+  }
+  
+  @media screen and (max-width: 767px) {
+    /* MEDIUM */
+
+    #logo {
+      display: none;
+    }
+    #logoAlt {
+      display: inherit;
+      max-height: 80px;
+    }
+    #textHolder {
+      display: inherit;
+      flex-basis: 60%;
+      margin: 8px 0 0 0;
+      padding: 0 10%;
+      align-self: center;
+    }
+  }
+  @media screen and (max-width: 640px) {
+    .logoHolder {
+      margin: 0;
+      padding: 0;
+    }#logoAlt {
+      max-height: 40px;
+    }
+    #textHolder {
+      display: inherit;
+      flex-basis: 50%;
+      margin: 8px 0 0 0;
+      padding: 0 10%;
+      align-self: center;
+    }
+  }

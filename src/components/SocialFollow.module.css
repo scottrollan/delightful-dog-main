@@ -7,19 +7,20 @@
     padding: 0 35%;
 }
 .icon {
-    color: var(--color-gray)
+    color: var(--delightful-neutral)
 }
 .icon:hover {
-    color: var(--color-dark-gray)
+    color: var(--delightful-neutral-muted)
+
 }
-@media (--media-max-large) {
+@media screen and (max-width: 799px) {
     .socialContainer {
         display: flex;
         justify-content: space-evenly;
         padding: 0 25%;
     }
    
-}@media (--media-max-medium) {
+}@media screen and (max-width: 674px--media-max-medium) {
     .socialContainer {
         display: flex;
         justify-content: space-evenly;

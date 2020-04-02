@@ -3,10 +3,8 @@
 @import './styles/layout.css';
 @import './styles/shared.module.css';
 
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App {
+  background-color: var(--color-white);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -24,10 +22,6 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: var(--color-black);
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 @keyframes App-logo-spin {

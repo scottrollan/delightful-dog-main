@@ -1,7 +1,7 @@
 @import "./styles/custom-media.css";
 @import "./styles/custom-properties.css";
 
-#headerSection {
+.Header {
   display: flex;
   flex-direction: column;
 }
@@ -12,13 +12,11 @@
   padding: 0 0 0 1em;
   margin: 0;
   box-sizing: border-box;
+  background-color: var(--delightful-neutral-muted);
 }
 
 .topInfo > div {
   display: flex;
-  /* @media (--media-max-medium) {
-    width: 100%;
-  } */
 }
 #infoDiv {
   justify-content: flex-start;
@@ -27,30 +25,17 @@
   justify-content: flex-end;
 }
 
-.contactBtn,
-.icon {
-  font-size: var(--font-base-size);
-  line-height: var(--font-base-line-height);
+.contactBtn {
+  font-size: var(--font-large-size);
+  line-height: var(--font-large-line-height);
   text-decoration: none;
   color: var(--delightful-neutral);
-  padding: 1rem 0.6rem;
-  @media (--media-max-large) {
-    font-size: var(--font-small-size);
-    line-height: var(--font-base-small-height);
-    padding: 1rem 0.5rem;
-  }
-  @media (--media-max-medium) {
-    font-size: var(--font-small-size);
-    line-height: var(--font-base-small-height);
-  }
-  @media (--media-max-small) {
-    font-size: var(--font-micro-size);
-    padding: 1rem 0.2rem;
-  }
+  padding: 1rem 0.6rem 0;
 }
 .icon {
   color: var(--delightful-bright);
   font-size: x-large;
+  margin: 0.7em 0.8em 0;;
 }
 .contactBtn:hover,
 .icon:hover {
@@ -82,7 +67,7 @@
   background-color: var(--delightful-bright);
 }
 
-.root {
+.navbar {
   position: relative;
   color: var(--color-black, #000);
   display: flex;
@@ -93,15 +78,7 @@
   background-color: var(--delightful-neutral-muted);
 }
 
-.root a {
-  color: inherit;
-  text-decoration: inherit;
-}
-
 .branding {
-  font-size: inherit;
-  font-weight: inherit;
-  text-transform: uppercase;
   max-width: 20%;
   margin: 0;
   padding: 5px 0 0 5%;
@@ -109,10 +86,10 @@
   align-self: center;
 }
 .logoHolder {
-  height: 100%;
+  max-width: 20vw;
 }
 #logo {
-  max-width: 100%;
+  max-width: 20vw;
 }
 #logoAlt {
   display: none;
@@ -126,96 +103,18 @@
   max-width: 80%;
   box-sizing: border-box;
 }
-.nav {
-  align-self: center;
-}
-#navItems {
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-  font-size: var(--font-base-size);
-}
-
-.navItem {
-  display: flex;
-  white-space: nowrap;
-  align-self: flex-end;
-  justify-content: flex-end;
-  line-height: calc(var(--font-base-line-height) * 1.5rem);
-  padding: 1.5rem 0.5rem;
-
-  @media (--media-max-medium) {
-    padding: 1rem 1.5rem;
-    width: 100%;
-    box-sizing: border-box;
-    text-align: right;
-
-    @nest &[data-is-active="true"]::before {
-      content: "";
-      width: 100%;
-      height: 1px;
-      position: absolute;
-      bottom: 0.5rem;
-      left: 0;
-      background-color: var(--color-white, #fff);
-    }
-  }
-
-  @media (--media-min-medium) {
-    margin-left: 0.5rem;
-  }
-}
-
-.navItem:hover {
-  opacity: 0.7;
-}
-
-.showNavButton {
-  appearance: none;
-  border: none;
-  font: inherit;
-  background: none;
-  color: inherit;
-  margin: 30% 0 0 0;
-  padding: 0 1.5rem;
-  outline: none;
-  box-sizing: border-box;
-}
-
-.hamburgerIcon {
-  font-size: calc(var(--font-base-line-height) * 1.5rem);
-  display: block;
-  margin-top: 0;
-}
 
 
 @media screen and (max-width: 899px) {
   /* LARGE */
-  .contactBtn,
-  .icon {
-    font-size: var(--font-small-size);
+  .contactBtn {
+    font-size: var(--font-large-size);
     line-height: var(--font-base-small-height);
     padding: 1rem 0.5rem;
   }
 }
-@media screen and (min-width: 675px) {
-  /* MEDIUM minimum */
-  .showNavButton {
-    display: none;
-  }
-  #navItems {
-    display: flex !important;
-    flex-direction: row;
-    justify-content: flex-end;
-    padding: 0 1rem;
-    align-self: flex-end;
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-    font-size: var(--font-base-size);
-  }
-}
-@media screen and (max-width: 674px) {
+
+@media screen and (max-width: 750px) {
   /* MEDIUM */
   .topInfo {
     flex-direction: column;
@@ -224,8 +123,7 @@
   .topInfo > div {
     width: 100%;
   }
-  .contactBtn,
-  .icon {
+  .contactBtn {
     font-size: var(--font-small-size);
     line-height: var(--font-base-small-height);
   }
@@ -247,29 +145,7 @@
     padding: 0 10%;
     align-self: center;
   }
-  .nav {
-    align-self: center;
-  }
-  #navItems {
-    z-index: 10;
-    /* display: none; */
-    position: absolute;
-    left: 0;
-    top: 100%;
-    width: 100%;
-    background-color: var(--color-black, #000000);
-    color: var(--color-white, #fff);
-  }
-
-  .navItem {
-    padding: 1rem 1.5rem;
-    width: 100%;
-    box-sizing: border-box;
-    text-align: right;
-  }
 
 }
 
-@media screen and (max-width: 449px) {
-  /* SMALL */
-}
+

@@ -4,23 +4,27 @@
 
 
 .container {
-    width: var(--width-small);
     margin: 0 auto;
-    max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
 }
+
 .topImage {
     max-width: 100%;
+    margin: 0 auto;
+
 }
-.container  div {
-    padding-bottom: 0.5em;
+.mapped {
+    padding: 3rem 0 0 0;
 }
+.course {
+    padding: 0 4em 2em;
+    margin:  auto;
+    text-align: center;
+}
+
 .bottomImageHolder {
     height: 200px;
-    align-self: center;
+    width: 100%;
+    text-align: center;
 }
 .bottomImage {
     height: 100%; 
