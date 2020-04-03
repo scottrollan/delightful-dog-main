@@ -20,7 +20,7 @@ class Header extends Component {
     return (
         <section className={styles.Header}>
           <div className={styles.topInfo}>
-            <div id={styles.infoDiv}>
+            <div className={styles.infoDiv}>
               <a className={styles.contactBtn} href="tel:678-273-3700">
                 (678) 273-3700
               </a>
@@ -67,7 +67,7 @@ class Header extends Component {
                 ></FontAwesomeIcon>
               </a>
             </div>
-            <div id={styles.tabDiv}>
+            <div className={styles.tabDiv}>
               <a
                 href="https://sanity-delightful-dog-main.netlify.com/"
                 id={styles.homeTab}

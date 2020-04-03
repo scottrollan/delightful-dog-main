@@ -18,10 +18,10 @@
 .topInfo > div {
   display: flex;
 }
-#infoDiv {
+.infoDiv {
   justify-content: flex-start;
 }
-#tabDiv {
+.tabDiv {
   justify-content: flex-end;
 }
 
@@ -55,11 +55,11 @@
   background-color: var(--delightful-bright);
 }
 
-#tabDiv:hover > #homeTab {
+.tabDiv:hover > #homeTab {
   background-color: var(--color-white);
 }
 
-#tabDiv #homeTab:hover {
+.tabDiv #homeTab:hover {
   background-color: var(--delightful-bright);
 }
 
@@ -122,6 +122,12 @@
   }
   .topInfo > div {
     width: 100%;
+  }
+  .infoDiv {
+    justify-content: space-between;
+  }
+  .tabDiv {
+    justify-content: center;
   }
   .contactBtn {
     font-size: var(--font-small-size);

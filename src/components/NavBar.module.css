@@ -3,7 +3,7 @@
 
 .bar {
     position: relative;
-    color: var(--color-black, #000);
+    color: var(--color-black);
     display: flex;
     flex-direction: row;
     justify-content: space-between !important;
