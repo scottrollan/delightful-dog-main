@@ -9,24 +9,13 @@
 .picRight {
   margin: 3rem 5rem;
   max-width: calc(100% - 10rem);
-  /* position: relative; */
   padding-bottom: 1.4rem;
-  /* @media (--media-max-medium) {
-    margin: 2rem 1rem;
-    max-width: calc(100% - 2rem);
-  } */
 }
 .picLeft > img {
   float: left;
-  /* @media (--media-max-medium) {
-      float: none;
-    } */
 }
 .picRight > img {
   float: right;
-  /* @media (--media-max-medium) {
-    float: none;
-  } */
 }
 .h2 {
   margin-top: 0;
@@ -36,11 +25,7 @@
   width: 20rem;
   height: auto;
   margin: 1.4rem;
-  max-height: var(--read-more-height);
-  /* @media (--media-max-medium) {
-    width: 90%;
-    margin: 5%;
-  } */
+  /* max-height: var(--read-more-height); */
 }
 
 .words {
@@ -115,11 +100,12 @@ button:hover {
   visibility: hidden;
 }
 
-@media screen and (max-width: 674px) {
+@media screen and (max-width: 767px) {
   .picLeft,
   .picRight {
-    margin: 2rem 1rem;
-    max-width: calc(100% - 2rem);
+    margin: 2rem 16%;
+    width: 68%;
+    /* max-width: 68%; */
   }
   .picLeft > img {
     float: none;
@@ -129,6 +115,7 @@ button:hover {
   }
   .pic {
     width: 90%;
+    height: auto;
     margin: 5%;
   }
   .btnLeft {

@@ -5,6 +5,7 @@
 
 .App {
   background-color: var(--color-white);
+  overflow-x: hidden;
 }
 
 @media (prefers-reduced-motion: no-preference) {

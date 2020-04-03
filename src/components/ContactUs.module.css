@@ -110,15 +110,23 @@
     .fieldset{
       width: auto;
     }
+    .line {
+      flex-direction: column;
+      margin: 0;
+    }
+    .input {
+      margin: 0.5em 0;
+    }
     .div {
       flex-direction: column;
     }
     .div > div {
       flex-basis: 95%;
       max-width: 96%;
+
     }
     #st {
-      margin-bottom: 10px;
+      margin: 0.5em 0;
     }
   }
     @media (--media-max-width-media) {
