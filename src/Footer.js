@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./Footer.module.css";
 import SocialFollow from "./components/SocialFollow"
 
-const Footer = (props) => {
-  const { navItems, text, router } = props;
+const Footer = () => {
+
   return (
     <div className={styles.root}>
         <SocialFollow />

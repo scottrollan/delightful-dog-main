@@ -1,3 +1,6 @@
+@import "../styles/custom-properties.css";
+
+
 .dogdivider {
   margin: 50px auto 20px;
   width: 400px;
@@ -17,7 +20,7 @@
   width: 100%;
   height: 25px;
   border-radius: 125px / 12px;
-  box-shadow: 0 0 8px #049372;
+  box-shadow: 0 0 8px var(--delightful-bright);
 }
 .dogdivider span {
   width: 50px;
@@ -28,7 +31,7 @@
   left: 50%;
   margin-left: -25px;
   border-radius: 100%;
-  box-shadow: 0 2px 4px #4fb39c;
+  box-shadow: 0 2px 4px var(--delightful-bright);
   background: #fff;
 }
 .dogdivider i {

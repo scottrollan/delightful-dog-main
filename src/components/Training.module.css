@@ -7,8 +7,14 @@
     margin: 0 auto;
 }
 
+.topImageHolder {
+    width: 100%;
+    text-align: center;
+}
+
 .topImage {
-    max-width: 100%;
+    width: 100%;
+    max-width: 800px;
     margin: 0 auto;
 
 }

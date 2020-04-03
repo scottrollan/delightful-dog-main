@@ -3,7 +3,7 @@
 
 .socialContainer {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     padding: 0 35%;
 }
 .icon {
@@ -16,15 +16,15 @@
 @media screen and (max-width: 799px) {
     .socialContainer {
         display: flex;
-        justify-content: space-evenly;
-        padding: 0 25%;
+        justify-content: space-between;
+        padding: 0 20%;
     }
    
 }@media screen and (max-width: 674px--media-max-medium) {
     .socialContainer {
         display: flex;
-        justify-content: space-evenly;
-        padding: 0 15%;
+        justify-content: space-between;
+        padding: 0 10%;
     }
    
 }

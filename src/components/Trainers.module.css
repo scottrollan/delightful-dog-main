@@ -77,9 +77,6 @@ button:hover {
   border-radius: 0.2rem;
   padding: 0.2rem 0;
   font-size: medium;
-  @media (--media-max-medium) {
-    margin-left: inherit;
-  }
 }
 
 .btnRight {
@@ -103,20 +100,21 @@ button:hover {
 @media screen and (max-width: 767px) {
   .picLeft,
   .picRight {
-    margin: 2rem 16%;
-    width: 68%;
-    /* max-width: 68%; */
+    margin: 2rem 5%;
+    width: 90%;
+    max-width: 90%;
   }
-  .picLeft > img {
-    float: none;
-  }
+  
+  .picLeft > img,
   .picRight > img {
     float: none;
   }
   .pic {
     width: 90%;
     height: auto;
-    margin: 5%;
+  }
+  .word {
+    width: 100%;
   }
   .btnLeft {
     margin-left: inherit;

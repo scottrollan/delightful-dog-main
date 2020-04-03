@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "./Landing.module.css";
 import Services from "./Services";
-import Stripe from "./Stripe"
-import otherSrc from '../assets/whiteDogCropped.jpg'
+
 
 const Landing = () => {
   const src =
@@ -19,8 +18,6 @@ const Landing = () => {
             <a className={styles.button} href="/services">
               Our Services
             </a>{" "}
-            {/* </p>
-            <p className={styles.centerThis}> */}
             <a className={styles.button} href="/training">
               Start Training
             </a>

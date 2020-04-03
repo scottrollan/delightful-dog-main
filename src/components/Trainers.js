@@ -4,22 +4,157 @@ import ReactHtmlParser from "react-html-parser";
 
 class Trainers extends Component {
   state = {
-    trainers: [
-      {
-        name: 'Melony',
-        photo: "https://cdn.sanity.io/images/iln0s9zc/production/a6eeb2925cea14fdba48fe5f60994ce53afcd71f-600x600.jpg",
-        bio: "<p>Melony has been a professional dog trainer and training instructor for over 8 years. Using proven positive training and behavior-modification techniques, she works to facilitate a happy, healthy relationship between dogs and their human families.</p><ul style={{ listStyletype: 'square' }}><strong>Certifications, licenses, and memberships include:</strong></ul><li>CPDT-KA (Certified Professional Dog Trainer-Knowledge Assessed)</li><li>Certified Canine Water Therapist</li><li>AKC Canine Good Citizen Evaluator</li><li>S.T.A.R. Puppy Evaluator</li><li>Red Cross Certified in Dog and Cat CPR and First Aid</li><li>Certified Massage Therapist</li><li>Licensed VSPDT (Victoria Stilwell Positively Dog Trainer)</li><li>Licensed Presenter: Dogs and Storks, Dogs and Baby Connection, and Dogs and Toddlers</li><li>Member, Pet Professional Guild</li><li>Member, The Association of Professional Dog Trainers</li><li>Member, Certification Council for Professional Dog Trainers</li></ul><p></p>She shares her home with her husband, David, and their 2 Cavalier King Charles Spaniels, an Old English Mastiff, an Australian shepherd and 2 wonderful cats.</p>"
-      },
-      {
-        name: "Biya",
-        photo: "https://cdn.sanity.io/images/iln0s9zc/production/d2a890d2f6c0931fa45eb03ca2308813205069e1-359x394.jpg",
-        bio: '<p>Biya was raised overseas & worked at a private zoo as a teenager. She is a licensed vet technician with knowledge of pet First Aid & pet CPR. She is actively involved with local pet rescues, Ahimsa House & does other volunteer work. She has her own personal "zoo" at her home. She was as a General Manager at a large daycare facility- a position she held for 9 years. Before partnering with Delightful Dog, she owned & operated PAWtopia Professional Pet Sitting.</p>'
-
-      }
-    ]
+    trainers: []
   };
 
-  
+  getTrainers = () => {
+    let trainers = [];
+    let bioStr = ``;
+    const sanityClient = require("@sanity/client");
+    const client = sanityClient({
+      projectId: "iln0s9zc",
+      dataset: "production",
+      token: "",
+      useCdn: false 
+    });
+  client
+  .fetch('*[category == "permanent trainer"] | order(displayOrder asc)')
+  .then(trainer => {
+    trainer.map(person => {
+      const rawRef = person.image.asset._ref;
+      const refArray = rawRef.split("-");
+      const src = `https://cdn.sanity.io/images/iln0s9zc/production/${refArray[1]}-${refArray[2]}.${refArray[3]}`;
+      person["src"] = src;
+      trainers.push(person);
+      const bio = person.bio;
+      bio.forEach(paragraph => {
+        let compiledParagraph = "";
+        let hrefArray = [];
+        let paragraphSegment = "";
+        if (!("listItem" in paragraph) && paragraph.children.length === 1) {
+          compiledParagraph = `<p>${paragraph.children[0].text}</p>`;
+        } else {
+          if (paragraph.markDefs.length > 0) {
+            // get hrefs for links
+            paragraph.markDefs.forEach(hrefObj => {
+              const href_key = {
+                _key: hrefObj._key,
+                href: hrefObj.href
+              };
+              hrefArray.push(href_key); //creates an array of all the hrefs in a paragraph
+            });
+          } //end href for links
+          const paragraphSegments = paragraph.children;
+
+          paragraphSegments.forEach(segment => {
+            let element = segment._type;
+            const text = segment.text;
+            const marks = segment.marks;
+            if (marks.length > 0) {
+              compiledParagraph = compiledParagraph.concat("<p>");
+              const mark = marks[0]; //'underline', 'em', etc.
+              const richText = [
+                "em",
+                "strong",
+                "underline",
+                "strike-through",
+                "code"
+              ];
+
+              if (richText.includes(mark)) {
+                let openTag = "";
+                let closeTag = "";
+                switch (mark) {
+                  case "em":
+                    openTag = "<em>";
+                    closeTag = "</em>";
+                    break;
+                  case "strong":
+                    openTag = "<strong>";
+                    closeTag = "</strong>";
+                    break;
+                  case "strike-through":
+                    openTag = "<strike>";
+                    closeTag = "</strike>";
+                    break;
+                  case "underline":
+                    openTag = "<u>";
+                    closeTag = "</u>";
+                    break;
+                  case "code":
+                    openTag = "<code>";
+                    closeTag = "</code>";
+                }
+                paragraphSegment = paragraphSegment.concat(
+                  `<${element}>${openTag}${text}${closeTag}</${element}>`
+                );
+              } else {
+                hrefArray.forEach(h => {
+                  if (h._key == mark) {
+                    //if marks[0] is something like '3ae70bbe4sa' vs 'em' or 'strong'
+                    const assignedHref = h.href;
+                    paragraphSegment = paragraphSegment.concat(
+                      `<${element}><a href=${assignedHref}>${text}</a></${element}>`
+                    );
+                  }
+                });
+              }
+              compiledParagraph = compiledParagraph.concat("</p>");
+            } else if (paragraph["listItem"]) {
+              //if marks.length == 0
+              const openTag =
+                "<ul style='list-style-type: square; list-style-position: inside;'><li>";
+              const closeTag = "</li></ul>";
+              paragraphSegment = paragraphSegment.concat(
+                `${openTag}${text}${closeTag}`
+              );
+            } else {
+              paragraphSegment = paragraphSegment.concat(
+                `<${element}>${text}</${element}>`
+              );
+            }
+          });
+        } // end of forEach(segment
+        compiledParagraph = compiledParagraph.concat(paragraphSegment);
+        bioStr = bioStr.concat(compiledParagraph);
+        this.setState({
+          hasLink: false
+        });
+      }); // end paragraph mapping
+      person["compiledBio"] = bioStr;
+      bioStr = "";
+
+      this.setState({
+        trainers: trainers
+      });
+    }); //end trainer.map(person =>
+  }); //end of .then
+};
+
+componentDidMount() {
+this.getTrainers();
+}
+
+readMore = event => {
+const el = event.target.value;
+document.getElementById(el).classList.add(styles.expanded);
+document.getElementById(el).classList.remove(styles.condensed);
+document.getElementById(`mask${el}`).classList.add(styles.visibilityHidden);
+document.getElementById(`readMore${el}`).classList.add(styles.displayNo);
+document.getElementById(`seeLess${el}`).classList.add(styles.displayYes);
+};
+seeLess = event => {
+const el = event.target.value;
+document.getElementById(el).classList.remove(styles.expanded);
+document.getElementById(el).classList.add(styles.condensed);
+document
+  .getElementById(`mask${el}`)
+  .classList.remove(styles.visibilityHidden);
+document.getElementById(`readMore${el}`).classList.remove(styles.displayNo);
+document.getElementById(`seeLess${el}`).classList.remove(styles.displayYes);
+};
+
+
 
   readMore = event => {
     const el = event.target.value;
@@ -44,14 +179,16 @@ class Trainers extends Component {
       <section>
         {trainers.map((t, index) => {
           const refId = t.name.toLowerCase() + index;
-          const src = t.photo
+          const src = t.src
+          const bio = t.compiledBio
+          const name = t.name
           return (
             <div key={refId} className={index % 2 === 0 ? styles.picLeft : styles.picRight}>
               <img src={src} alt="" className={styles.pic} />
               <div id={refId} className={`${styles.words} ${styles.condensed}`}>
-                <h2 className={styles.h2}>{t.name}</h2>
+                <h2 className={styles.h2}>{name}</h2>
                 <div id={`mask${refId}`} className={styles.mask}></div>
-                <span>{ReactHtmlParser(t.bio)}</span>
+                <span>{ReactHtmlParser(bio)}</span>
               </div>
               <button
                 id={`readMore${refId}`}
