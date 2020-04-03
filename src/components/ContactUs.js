@@ -1,10 +1,13 @@
 import React from "react";
 import styles from "./ContactUs.module.css";
+import src from "../assets/reachOut.jpg"
 
 const ContactUs = () => {
   return (
+    <section className={styles.ContactUs}>
+      <img src={src} alt="" className={styles.reachOut}/>
     <div id={styles.contactArea}>
-      <section className={styles.section}>
+      <div className={styles.address}>
         <h3 className={styles.h3}>The Delightful Dog</h3>
         <p className={styles.p}>4958 Lower Roswell Rd.</p>
         <p className={styles.p}>Suite 124</p>
@@ -17,7 +20,7 @@ const ContactUs = () => {
           {" "}
           or call us: <a className={styles.href} href="tel:6782733700">678.273.3700</a>
         </h5>
-      </section>
+      </div>
       <fieldset className={styles.fieldset}>
         <legend className={styles.legend}>Send Us A Message</legend>
         <form
@@ -172,6 +175,7 @@ const ContactUs = () => {
         </form>
       </fieldset>
     </div>
+    </section>
   );
 };
 

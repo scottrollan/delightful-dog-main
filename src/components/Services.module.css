@@ -48,6 +48,7 @@
 @media screen and (max-width: 767px) {
   .flexWrapperServices {
     flex-direction: column-reverse;
+    padding: 0 5%;
   }
   #imageDivServices,
   #wordsDivServices {

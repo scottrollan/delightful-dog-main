@@ -1,6 +1,11 @@
 @import '../styles/custom-media.css';
 @import '../styles/custom-properties.css';
 
+
+.reachOut {
+  width: 100%;
+  height: auto;
+}
 #contactArea {
     display: flex;
     margin: 20px 10%;
@@ -13,7 +18,7 @@
     line-height: 1.2;
     margin: 10px;
   }
-  .section {
+  .address {
     box-sizing: border-box;
     width: 30%;
     padding: 0 10px 0 0;
@@ -103,7 +108,7 @@
       width: 60%;
       margin: 20px 20%;
     }
-    .section {
+    .address {
       width: auto;
       margin-bottom: 40px;
     }
