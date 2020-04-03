@@ -1,11 +1,14 @@
 import React from "react";
 import styles from "./ContactUs.module.css";
 import src from "../assets/reachOut.jpg"
+import Stripe from './Stripe'
+import src2 from '../assets/fiesty.jpg'
 
 const ContactUs = () => {
   return (
     <section className={styles.ContactUs}>
       <img src={src} alt="" className={styles.reachOut}/>
+      <Stripe />
     <div id={styles.contactArea}>
       <div className={styles.address}>
         <h3 className={styles.h3}>The Delightful Dog</h3>
@@ -174,6 +177,9 @@ const ContactUs = () => {
           </button>
         </form>
       </fieldset>
+    </div>
+    <div className={styles.bottomImageHolder}> 
+      <img src={src2} alt='' className={styles.contactBottomImage} />
     </div>
     </section>
   );

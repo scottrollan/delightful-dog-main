@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styles from "./Trainers.module.css";
 import ReactHtmlParser from "react-html-parser";
+import src2 from '../assets/pekingese.jpg'
 
 class GuestTrainers extends Component {
   state = {
@@ -23,7 +24,7 @@ class GuestTrainers extends Component {
         trainer.map(person => {
           const rawRef = person.image.asset._ref;
           const refArray = rawRef.split("-");
-          const src = `https://cdn.sanity.io/images/iln0s9zc/production/${refArray[1]}-${refArray[2]}.${refArray[3]}?h=200&fit=max`;
+          const src = `https://cdn.sanity.io/images/iln0s9zc/production/${refArray[1]}-${refArray[2]}.${refArray[3]}`;
           person["src"] = src;
           trainers.push(person);
           const bio = person.bio;
@@ -193,6 +194,9 @@ class GuestTrainers extends Component {
             </div>
           );
         })}{" "}
+        <div className={styles.bottomImageHolder}>
+          <img src={src2} alt='' className={styles.trainersBottomImage}/>
+        </div>
       </section>
     );
   }

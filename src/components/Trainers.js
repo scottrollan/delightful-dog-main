@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styles from "./Trainers.module.css";
 import ReactHtmlParser from "react-html-parser";
+import src2 from '../assets/whiteFluffy.jpg'
+
 
 class Trainers extends Component {
   state = {
@@ -210,6 +212,9 @@ document.getElementById(`seeLess${el}`).classList.remove(styles.displayYes);
             </div>
           );
         })}
+        <div className={styles.bottomImageHolder}>
+          <img src={src2} atl='' className={styles.trainersBottomImage} />
+        </div>
       </section>
     );
   }

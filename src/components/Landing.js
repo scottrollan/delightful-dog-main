@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./Landing.module.css";
 import Services from "./Services";
 
-
 const Landing = () => {
   const src =
     "https://cdn.sanity.io/images/3g1lf71y/production/99f49e5dbf7f42961876d088c801ebf43ab9d5b7-6016x4016.jpg";

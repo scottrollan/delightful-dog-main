@@ -45,6 +45,17 @@
   font-family: "Courgette", cursive;
 }
 
+.bottomImageHolder {
+  height: 200px;
+  width: 100%;
+  text-align: center;
+}
+
+.servicesBottomImage {
+  border-radius: 50%;
+  height: 100%; 
+}
+
 @media screen and (max-width: 767px) {
   .flexWrapperServices {
     flex-direction: column-reverse;

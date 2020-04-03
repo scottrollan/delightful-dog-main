@@ -3,6 +3,7 @@ import ReactHtmlParser from "react-html-parser";
 import styles from "./Training.module.css";
 import Stripe from "./Stripe";
 import DogDivider from "./DogDivider";
+import src2 from '../assets/grad.jpg'
 
 class Training extends Component {
   state = {
@@ -71,8 +72,6 @@ class Training extends Component {
   render() {
     const src1 =
       "https://cdn.sanity.io/images/iln0s9zc/production/117a1adf878ad66f83abc8ac4d9b0afddbd29a32-3234x1796.jpg";
-    const src2 =
-      "https://cdn.sanity.io/images/iln0s9zc/production/2f88f9e0a86f0d9b1cb59c90c22023409c21a6be-466x588.jpg";
 
     const courses = this.state.courses;
     return (

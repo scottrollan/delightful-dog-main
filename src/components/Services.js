@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactHtmlParser from "react-html-parser";
 import styles from "./Services.module.css";
 import Stripe from "./Stripe"
+import src2 from '../assets/doodle.jpg'
 
 class Services extends Component {
   state = {
@@ -96,6 +97,9 @@ class Services extends Component {
             </div>
           );
         })}
+        </div>
+        <div className={styles.bottomImageHolder}>
+        <img src={src2} alt='' className={styles.servicesBottomImage} />
         </div>
         <Stripe />
       </section>

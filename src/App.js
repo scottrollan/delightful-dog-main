@@ -41,11 +41,6 @@ class App extends Component {
         page: <GuestTrainers />
       },
       {
-        toPath: "/training",
-        nav: "Training",
-        page: <Training />
-      },
-      {
         toPath: "/contact",
         nav: "Contact",
         page: <ContactUs />
