@@ -24,7 +24,7 @@ class NavBar extends Component {
           <img src={textOnly} alt="" className={styles.textOnly} />
         </div>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav" style={{ textAlign: 'right', justifyContent: 'flex-end'}}>
+        <Navbar.Collapse id="responsive-navbar-nav" style={{ textAlign: 'right', paddingRight: '2vw', justifyContent: 'flex-end'}}>
           <Nav >
             {navItems.map((item, index) => {
               const { toPath, nav } = item;
