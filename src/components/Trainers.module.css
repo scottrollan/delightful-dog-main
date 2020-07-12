@@ -11,6 +11,8 @@
   max-width: calc(100% - 10rem);
   padding-bottom: 1.4rem;
   display: flex;
+  align-items: flex-start;
+  flex-direction: row;
 }
 
 .picRight {
@@ -23,7 +25,9 @@
 .pic {
   width: 20rem;
   height: auto;
+  min-height: 10px;
   margin: 1.4rem;
+  align-self: center;
   /* max-height: var(--read-more-height); */
 }
 
@@ -33,7 +37,7 @@
 
 .mask {
   width: 100%;
-  min-height: calc(var(--read-more-height) / 3);
+  height: 100px;
   position: absolute;
   bottom: 0;
   z-index: 9;
@@ -72,7 +76,7 @@ button:hover {
 }
 .btnLeft {
   width: 8rem;
-  margin-left: calc(100% - 32.2rem);
+  margin: 16px 1.4rem;
   border-radius: 0.2rem;
   padding: 0.2rem 0;
   font-size: medium;
@@ -80,7 +84,7 @@ button:hover {
 
 .btnRight {
   width: 8rem;
-  margin-left: calc(100% - 9.4rem);
+  margin: 16px 1.4rem;
   border-radius: 0.2rem;
   padding: 0.2rem 0;
   font-size: medium;
@@ -102,12 +106,9 @@ button:hover {
     margin: 2rem 5%;
     width: 90%;
     max-width: 90%;
+    flex-direction: column;
   }
 
-  .picLeft > img,
-  .picRight > img {
-    float: none;
-  }
   .pic {
     width: 90%;
     height: auto;
@@ -115,9 +116,9 @@ button:hover {
   .word {
     width: 100%;
   }
-  .btnLeft {
+  /* .btnLeft {
     margin-left: inherit;
-  }
+  } */
 }
 .bottomImageHolder {
   height: 200px;

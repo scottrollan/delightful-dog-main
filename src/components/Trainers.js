@@ -3,6 +3,7 @@ import styles from './Trainers.module.css';
 import ReactHtmlParser from 'react-html-parser';
 import src2 from '../assets/whiteFluffy.jpg';
 import $ from 'jquery';
+import DogDivider from './DogDivider';
 
 class Trainers extends Component {
   state = {
@@ -107,14 +108,9 @@ class Trainers extends Component {
                   }
                 });
               }
-              // compiledParagraph = compiledParagraph.concat('</p>');
             } else if (paragraph['listItem']) {
-              //if marks.length == 0
-              const openTag =
-                "<ul style='list-style-type: square; list-style-position: inside;'><li>";
-              const closeTag = '</li></ul>';
               paragraphSegment = paragraphSegment.concat(
-                `${openTag}${text}${closeTag}`
+                `<p style="margin-top: 1rem; font-weight: 500;">&#9642&nbsp&nbsp&nbsp${text}</p>`
               );
             } else {
               paragraphSegment = paragraphSegment.concat(
@@ -128,7 +124,7 @@ class Trainers extends Component {
         this.setState({
           hasLink: false,
         });
-      }); // end paragraph mapping
+      }); // end paragraph forEach
       person['compiledBio'] = bioStr;
       bioStr = '';
 
@@ -144,16 +140,16 @@ class Trainers extends Component {
 
   readMore = (event) => {
     const el = event.target.value;
-    $('#el').addClass(styles.expanded);
-    $('#el').removeClass(styles.condensed);
+    $(`#${el}`).addClass(styles.expanded);
+    $(`#${el}`).removeClass(styles.condensed);
     $(`#mask${el}`).addClass(styles.visibilityHidden);
     $(`#readMore${el}`).addClass(styles.displayNo);
     $(`#seeLess${el}`).addClass(styles.displayYes);
   };
   seeLess = (event) => {
     const el = event.target.value;
-    $('#el').removeClass(styles.expanded);
-    $('#el').addClass(styles.condensed);
+    $(`#${el}`).removeClass(styles.expanded);
+    $(`#${el}`).addClass(styles.condensed);
     $(`#mask${el}`).removeClass(styles.visibilityHidden);
     $(`#readMore${el}`).removeClass(styles.displayNo);
     $(`#seeLess${el}`).removeClass(styles.displayYes);
@@ -164,55 +160,67 @@ class Trainers extends Component {
     return (
       <section>
         {trainers.map((t, index) => {
-          const refId = t.name.toLowerCase() + index;
+          const ref = t.name.split(' ');
+          const refId = ref.join('').toLowerCase() + index;
           const src = t.src;
-          const unparsedBio = t.compiledBio;
-          // console.log(unparsedBio);
-          const bio = ReactHtmlParser(unparsedBio);
-          const bioLength = 10;
-          const name = t.name;
           return (
-            <div
-              key={refId}
-              className={index % 2 === 0 ? styles.picLeft : styles.picRight}
-            >
-              <img src={src} alt="" className={styles.pic} />
-              <div id={refId} className={`${styles.words} ${styles.condensed}`}>
-                <h2 className={styles.h2}>{name}</h2>
-                <div
-                  id={`mask${refId}`}
-                  className={styles.mask}
-                  style={{ display: bioLength < 100 ? 'none' : 'inherit' }}
-                ></div>
-                <span>{bio}</span>
-              </div>
+            <div key={refId}>
               <div
-                style={{
-                  width: '100%',
-                  display: bioLength < 100 ? 'none' : 'inherit',
-                }}
+                className={index % 2 === 0 ? styles.picLeft : styles.picRight}
               >
-                <button
-                  id={`readMore${refId}`}
-                  value={refId}
-                  onClick={(event) => this.readMore(event)}
-                  className={index % 2 === 0 ? styles.btnRight : styles.btnLeft}
-                >
-                  Read More
-                </button>
-                <button
-                  id={`seeLess${refId}`}
-                  value={refId}
-                  onClick={(event) => this.seeLess(event)}
-                  className={index % 2 === 0 ? styles.btnRight : styles.btnLeft}
-                  style={{ display: 'none' }}
-                >
-                  See Less
-                </button>
+                <img src={src} alt="" className={styles.pic} />
+                <div>
+                  <div
+                    id={refId}
+                    className={`${styles.words} ${styles.condensed}`}
+                  >
+                    <h2 className={styles.h2}>{t.name}</h2>
+                    <div
+                      id={`mask${refId}`}
+                      className={styles.mask}
+                      style={{
+                        display:
+                          $(`#${refId}`).height() > 399 ? 'inherit' : 'none',
+                      }}
+                    ></div>
+                    <span>{ReactHtmlParser(t.compiledBio)}</span>
+                  </div>
+                  <button
+                    id={`readMore${refId}`}
+                    value={refId}
+                    onClick={(event) => this.readMore(event)}
+                    className={
+                      index % 2 === 0 ? styles.btnRight : styles.btnLeft
+                    }
+                    style={{
+                      display:
+                        $(`#${refId}`).height() > 399 ? 'inherit' : 'none',
+                    }}
+                  >
+                    Read More
+                  </button>
+                  <button
+                    id={`seeLess${refId}`}
+                    value={refId}
+                    onClick={(event) => this.seeLess(event)}
+                    className={
+                      index % 2 === 0 ? styles.btnRight : styles.btnLeft
+                    }
+                    style={{ display: 'none' }}
+                  >
+                    See Less
+                  </button>
+                </div>
               </div>
+              <DogDivider
+                style={{
+                  display: index === trainers.length - 1 ? 'none' : 'inherit',
+                }}
+              />
             </div>
           );
         })}
+
         <div className={styles.bottomImageHolder}>
           <img src={src2} alt="" className={styles.trainersBottomImage} />
         </div>
