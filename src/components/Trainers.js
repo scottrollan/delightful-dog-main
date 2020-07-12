@@ -178,10 +178,10 @@ class Trainers extends Component {
                     <div
                       id={`mask${refId}`}
                       className={styles.mask}
-                      style={{
-                        display:
-                          $(`#${refId}`).height() > 399 ? 'inherit' : 'none',
-                      }}
+                      // style={{
+                      //   display:
+                      //     $(`#${refId}`).height() > 399 ? 'inherit' : 'none',
+                      // }}
                     ></div>
                     <span>{ReactHtmlParser(t.compiledBio)}</span>
                   </div>
@@ -189,13 +189,7 @@ class Trainers extends Component {
                     id={`readMore${refId}`}
                     value={refId}
                     onClick={(event) => this.readMore(event)}
-                    className={
-                      index % 2 === 0 ? styles.btnRight : styles.btnLeft
-                    }
-                    style={{
-                      display:
-                        $(`#${refId}`).height() > 399 ? 'inherit' : 'none',
-                    }}
+                    className={styles.button}
                   >
                     Read More
                   </button>
@@ -203,9 +197,7 @@ class Trainers extends Component {
                     id={`seeLess${refId}`}
                     value={refId}
                     onClick={(event) => this.seeLess(event)}
-                    className={
-                      index % 2 === 0 ? styles.btnRight : styles.btnLeft
-                    }
+                    className={styles.button}
                     style={{ display: 'none' }}
                   >
                     See Less
