@@ -86,6 +86,20 @@ const ContactUs = () => {
     }));
   };
 
+  const phoneMask = () => {
+    var num = $('#phone').val().replace(/\D/g, '');
+    $('#phone').val(
+      '(' +
+        num.substring(0, 3) +
+        ')' +
+        num.substring(3, 6) +
+        '-' +
+        num.substring(6, 10)
+    );
+  };
+
+  $('[type="tel"]').keyup(phoneMask);
+
   return (
     <section className={styles.ContactUs}>
       <AlertMessageSent />
@@ -159,7 +173,18 @@ const ContactUs = () => {
                 onChange={(e) => handleChange(e)}
               />
             </div>
-
+            <div className={styles.line}>
+              <input
+                id="phone"
+                className={styles.input}
+                type="tel"
+                value={state.phone}
+                name="phone"
+                placeholder="Phone, ex. (111)-111-1111"
+                onInput={phoneMask}
+                onChange={(e) => handleChange(e)}
+              />
+            </div>
             <div className={styles.line}>
               <input
                 className={styles.input}
