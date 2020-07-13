@@ -1,12 +1,70 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './ContactUs.module.css';
 import src from '../assets/reachOut.jpg';
 import Stripe from '../components/Stripe';
 import src2 from '../assets/fiesty.jpg';
+import $ from 'jquery';
+import AlertMessageSent from '../components/AlertMessageSent';
 
 const ContactUs = () => {
+  const [status, setStatus] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [address1, setAddress1] = useState('');
+  const [address2, setAddress2] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [zip, setZip] = useState('');
+  const [message, setMessage] = useState('');
+
+  const encode = (data) => {
+    const formData = new FormData();
+    Object.keys(data).forEach((k) => {
+      formData.append(k, data[k]);
+    });
+    return formData;
+  };
+
+  const handleSubmit = (e) => {
+    const data = { 'form-name': 'contact', name, email, message };
+
+    fetch('/', {
+      method: 'POST',
+      // headers: { "Content-Type": 'multipart/form-data; boundary=random' },
+      body: encode(data),
+    })
+      .then(() => {
+        setStatus('Form Submission Successful!!');
+        $('#alertMessageSent').css('display', 'flex');
+        $('#alertMessageSent').delay(1500).fadeOut(1000);
+        setName('');
+        setEmail('');
+        setAddress1('');
+        setAddress2('');
+        setCity('');
+        setState('');
+        setZip('');
+        setMessage('');
+        $('#contactForm')[0].reset();
+      })
+      .catch((error) => {
+        setStatus('Form Submission Failed!');
+        console.log(error);
+        alert(status);
+      });
+
+    e.preventDefault();
+  };
+
+  const handleChange = (e) => {
+    const { setMe, value } = e.target;
+
+    return setMe(value);
+  };
+
   return (
     <section className={styles.ContactUs}>
+      <AlertMessageSent />
       <div
         style={{
           display: 'flex',
@@ -44,11 +102,9 @@ const ContactUs = () => {
         <fieldset className={styles.fieldset}>
           <legend className={styles.legend}>Send Us A Message</legend>
           <form
+            onSubmit={handleSubmit}
+            action="/thank-you/"
             className={styles.form}
-            name="contact"
-            method="post"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
           >
             <input
               className={styles.input}
@@ -61,19 +117,23 @@ const ContactUs = () => {
               <input
                 className={styles.input}
                 type="text"
-                id="name"
                 name="name"
                 required
                 placeholder="Your name"
+                value={name}
+                onChange={handleChange}
+                setMe="setName"
               />
 
               <input
                 className={styles.input}
                 type="email"
-                id="email"
                 name="email"
                 required
                 placeholder="Your email"
+                value={email}
+                onChange={handleChange}
+                setMe="setEmail"
               />
             </div>
 
@@ -81,17 +141,21 @@ const ContactUs = () => {
               <input
                 className={styles.input}
                 type="text"
-                id="address1"
                 name="address1"
                 placeholder="Address line 1"
+                value={address1}
+                onChange={handleChange}
+                setMe="setAddress1"
               />
 
               <input
                 className={styles.input}
                 type="text"
-                id="address2"
                 name="address2"
                 placeholder="Address line 2"
+                value={address2}
+                onChange={handleChange}
+                setMe="setAddress2"
               />
             </div>
 
@@ -101,80 +165,31 @@ const ContactUs = () => {
                 type="text"
                 name="city"
                 placeholder="City"
+                value={city}
+                onChange={handleChange}
+                setMe="setCity"
               />
               <span className={styles.stZip}>
-                <select
+                <input
                   className={styles.select}
-                  defaultValue="GA"
+                  type="text"
                   name="state"
+                  placeholder="State"
                   id={styles.st}
-                >
-                  <option value="AL">Alabama</option>
-                  <option value="AK">Alaska</option>
-                  <option value="AZ">Arizona</option>
-                  <option value="AR">Arkansas</option>
-                  <option value="CA">California</option>
-                  <option value="CO">Colorado</option>
-                  <option value="CT">Connecticut</option>
-                  <option value="DE">Delaware</option>
-                  <option value="DC">District Of Columbia</option>
-                  <option value="FL">Florida</option>
-                  <option value="GA">Georgia</option>
-                  <option value="HI">Hawaii</option>
-                  <option value="ID">Idaho</option>
-                  <option value="IL">Illinois</option>
-                  <option value="IN">Indiana</option>
-                  <option value="IA">Iowa</option>
-                  <option value="KS">Kansas</option>
-                  <option value="KY">Kentucky</option>
-                  <option value="LA">Louisiana</option>
-                  <option value="ME">Maine</option>
-                  <option value="MD">Maryland</option>
-                  <option value="MA">Massachusetts</option>
-                  <option value="MI">Michigan</option>
-                  <option value="MN">Minnesota</option>
-                  <option value="MS">Mississippi</option>
-                  <option value="MO">Missouri</option>
-                  <option value="MT">Montana</option>
-                  <option value="NE">Nebraska</option>
-                  <option value="NV">Nevada</option>
-                  <option value="NH">New Hampshire</option>
-                  <option value="NJ">New Jersey</option>
-                  <option value="NM">New Mexico</option>
-                  <option value="NY">New York</option>
-                  <option value="NC">North Carolina</option>
-                  <option value="ND">North Dakota</option>
-                  <option value="OH">Ohio</option>
-                  <option value="OK">Oklahoma</option>
-                  <option value="OR">Oregon</option>
-                  <option value="PA">Pennsylvania</option>
-                  <option value="RI">Rhode Island</option>
-                  <option value="SC">South Carolina</option>
-                  <option value="SD">South Dakota</option>
-                  <option value="TN">Tennessee</option>
-                  <option value="TX">Texas</option>
-                  <option value="UT">Utah</option>
-                  <option value="VT">Vermont</option>
-                  <option value="VA">Virginia</option>
-                  <option value="WA">Washington</option>
-                  <option value="WV">West Virginia</option>
-                  <option value="WI">Wisconsin</option>
-                  <option value="WY">Wyoming</option>
-                  <option value="AS">American Samoa</option>
-                  <option value="GU">Guam</option>
-                  <option value="MP">Northern Mariana Islands</option>
-                  <option value="PR">Puerto Rico</option>
-                  <option value="UM">
-                    United States Minor Outlying Islands
-                  </option>
-                  <option value="VI">Virgin Islands</option>
-                </select>
+                  value={state}
+                  onChange={handleChange}
+                  setMe="setState"
+                />
+
                 <input
                   className={styles.input}
                   type="text"
                   id={styles.zip}
                   name="zip"
                   placeholder="ZIP Code"
+                  value={zip}
+                  onChange={handleChange}
+                  setMe="setZip"
                 />
               </span>
             </div>
@@ -183,11 +198,13 @@ const ContactUs = () => {
               <textarea
                 className={styles.textarea}
                 required
-                id="message"
                 name="message"
                 rows="6"
                 placeholder="Your message here..."
                 style={{ flexBasis: '100%' }}
+                value={message}
+                onChange={handleChange}
+                setMe="setMessage"
               ></textarea>
             </div>
 
