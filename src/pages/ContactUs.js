@@ -14,18 +14,10 @@ const ContactUs = () => {
     address1: '',
     address2: '',
     city: '',
-    state: '',
+    st: '',
     zip: '',
     message: '',
   });
-  // const [name, setName] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [address1, setAddress1] = useState('');
-  // const [address2, setAddress2] = useState('');
-  // const [city, setCity] = useState('');
-  // const [state, setState] = useState('');
-  // const [zip, setZip] = useState('');
-  // const [message, setMessage] = useState('');
 
   const encode = (data) => {
     const formData = new FormData();
@@ -36,9 +28,17 @@ const ContactUs = () => {
   };
 
   const handleSubmit = (e) => {
-    const data = { 'form-name': 'contact', state };
-    console.log(data);
-    alert('check console');
+    const data = {
+      'form-name': 'contact',
+      name: state.name,
+      email: state.email,
+      address1: state.address1,
+      address2: state.address2,
+      city: state.city,
+      st: state.st,
+      zip: state.zip,
+      message: state.message,
+    };
 
     fetch('/', {
       method: 'POST',
@@ -55,10 +55,11 @@ const ContactUs = () => {
           address1: '',
           address2: '',
           city: '',
-          state: '',
+          st: '',
           zip: '',
           message: '',
         });
+        $('#contactForm')[0].reset();
       })
       .catch((error) => {
         setStatus('Form Submission Failed!');
@@ -116,7 +117,11 @@ const ContactUs = () => {
         </div>
         <fieldset className={styles.fieldset}>
           <legend className={styles.legend}>Send Us A Message</legend>
-          <form onSubmit={handleSubmit} className={styles.form}>
+          <form
+            onSubmit={handleSubmit}
+            className={styles.form}
+            id="contactForm"
+          >
             <input
               className={styles.input}
               type="hidden"
@@ -133,7 +138,6 @@ const ContactUs = () => {
                 placeholder="Your name"
                 value={state.name}
                 onChange={(e) => handleChange(e)}
-                setMe="setName"
               />
 
               <input
@@ -144,7 +148,6 @@ const ContactUs = () => {
                 placeholder="Your email"
                 value={state.email}
                 onChange={(e) => handleChange(e)}
-                setMe="setEmail"
               />
             </div>
 
@@ -156,7 +159,6 @@ const ContactUs = () => {
                 placeholder="Address line 1"
                 value={state.address1}
                 onChange={(e) => handleChange(e)}
-                setMe="setAddress1"
               />
 
               <input
@@ -166,7 +168,6 @@ const ContactUs = () => {
                 placeholder="Address line 2"
                 value={state.address2}
                 onChange={(e) => handleChange(e)}
-                setMe="setAddress2"
               />
             </div>
 
@@ -178,18 +179,16 @@ const ContactUs = () => {
                 placeholder="City"
                 value={state.city}
                 onChange={(e) => handleChange(e)}
-                setMe="setCity"
               />
               <span className={styles.stZip}>
                 <input
                   className={styles.select}
                   type="text"
-                  name="state"
+                  name="st"
                   placeholder="State"
                   id={styles.st}
                   value={state.state}
                   onChange={(e) => handleChange(e)}
-                  setMe="setState"
                 />
 
                 <input
@@ -200,7 +199,6 @@ const ContactUs = () => {
                   placeholder="ZIP Code"
                   value={state.zip}
                   onChange={(e) => handleChange(e)}
-                  setMe="setZip"
                 />
               </span>
             </div>
@@ -215,7 +213,6 @@ const ContactUs = () => {
                 style={{ flexBasis: '100%' }}
                 value={state.message}
                 onChange={(e) => handleChange(e)}
-                setMe="setMessage"
               ></textarea>
             </div>
 
