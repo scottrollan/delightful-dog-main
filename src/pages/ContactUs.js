@@ -8,14 +8,24 @@ import AlertMessageSent from '../components/AlertMessageSent';
 
 const ContactUs = () => {
   const [status, setStatus] = useState('');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [address1, setAddress1] = useState('');
-  const [address2, setAddress2] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [zip, setZip] = useState('');
-  const [message, setMessage] = useState('');
+  const [state, setState] = useState({
+    name: '',
+    email: '',
+    address1: '',
+    address2: '',
+    city: '',
+    state: '',
+    zip: '',
+    message: '',
+  });
+  // const [name, setName] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [address1, setAddress1] = useState('');
+  // const [address2, setAddress2] = useState('');
+  // const [city, setCity] = useState('');
+  // const [state, setState] = useState('');
+  // const [zip, setZip] = useState('');
+  // const [message, setMessage] = useState('');
 
   const encode = (data) => {
     const formData = new FormData();
@@ -26,7 +36,9 @@ const ContactUs = () => {
   };
 
   const handleSubmit = (e) => {
-    const data = { 'form-name': 'contact', name, email, message };
+    const data = { 'form-name': 'contact', state };
+    console.log(data);
+    alert('check console');
 
     fetch('/', {
       method: 'POST',
@@ -37,15 +49,16 @@ const ContactUs = () => {
         setStatus('Form Submission Successful!!');
         $('#alertMessageSent').css('display', 'flex');
         $('#alertMessageSent').delay(1500).fadeOut(1000);
-        setName('');
-        setEmail('');
-        setAddress1('');
-        setAddress2('');
-        setCity('');
-        setState('');
-        setZip('');
-        setMessage('');
-        $('#contactForm')[0].reset();
+        setState({
+          name: '',
+          email: '',
+          address1: '',
+          address2: '',
+          city: '',
+          state: '',
+          zip: '',
+          message: '',
+        });
       })
       .catch((error) => {
         setStatus('Form Submission Failed!');
@@ -57,9 +70,11 @@ const ContactUs = () => {
   };
 
   const handleChange = (e) => {
-    const { setMe, value } = e.target;
-
-    return setMe(value);
+    const { name, value } = e.target;
+    setState((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   return (
@@ -101,11 +116,7 @@ const ContactUs = () => {
         </div>
         <fieldset className={styles.fieldset}>
           <legend className={styles.legend}>Send Us A Message</legend>
-          <form
-            onSubmit={handleSubmit}
-            action="/thank-you/"
-            className={styles.form}
-          >
+          <form onSubmit={handleSubmit} className={styles.form}>
             <input
               className={styles.input}
               type="hidden"
@@ -120,8 +131,8 @@ const ContactUs = () => {
                 name="name"
                 required
                 placeholder="Your name"
-                value={name}
-                onChange={handleChange}
+                value={state.name}
+                onChange={(e) => handleChange(e)}
                 setMe="setName"
               />
 
@@ -131,8 +142,8 @@ const ContactUs = () => {
                 name="email"
                 required
                 placeholder="Your email"
-                value={email}
-                onChange={handleChange}
+                value={state.email}
+                onChange={(e) => handleChange(e)}
                 setMe="setEmail"
               />
             </div>
@@ -143,8 +154,8 @@ const ContactUs = () => {
                 type="text"
                 name="address1"
                 placeholder="Address line 1"
-                value={address1}
-                onChange={handleChange}
+                value={state.address1}
+                onChange={(e) => handleChange(e)}
                 setMe="setAddress1"
               />
 
@@ -153,8 +164,8 @@ const ContactUs = () => {
                 type="text"
                 name="address2"
                 placeholder="Address line 2"
-                value={address2}
-                onChange={handleChange}
+                value={state.address2}
+                onChange={(e) => handleChange(e)}
                 setMe="setAddress2"
               />
             </div>
@@ -165,8 +176,8 @@ const ContactUs = () => {
                 type="text"
                 name="city"
                 placeholder="City"
-                value={city}
-                onChange={handleChange}
+                value={state.city}
+                onChange={(e) => handleChange(e)}
                 setMe="setCity"
               />
               <span className={styles.stZip}>
@@ -176,8 +187,8 @@ const ContactUs = () => {
                   name="state"
                   placeholder="State"
                   id={styles.st}
-                  value={state}
-                  onChange={handleChange}
+                  value={state.state}
+                  onChange={(e) => handleChange(e)}
                   setMe="setState"
                 />
 
@@ -187,8 +198,8 @@ const ContactUs = () => {
                   id={styles.zip}
                   name="zip"
                   placeholder="ZIP Code"
-                  value={zip}
-                  onChange={handleChange}
+                  value={state.zip}
+                  onChange={(e) => handleChange(e)}
                   setMe="setZip"
                 />
               </span>
@@ -202,8 +213,8 @@ const ContactUs = () => {
                 rows="6"
                 placeholder="Your message here..."
                 style={{ flexBasis: '100%' }}
-                value={message}
-                onChange={handleChange}
+                value={state.message}
+                onChange={(e) => handleChange(e)}
                 setMe="setMessage"
               ></textarea>
             </div>
