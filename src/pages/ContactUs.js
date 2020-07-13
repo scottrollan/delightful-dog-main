@@ -11,6 +11,7 @@ const ContactUs = () => {
   const [state, setState] = useState({
     name: '',
     email: '',
+    phone: null,
     address1: '',
     address2: '',
     city: '',
@@ -32,12 +33,18 @@ const ContactUs = () => {
       'form-name': 'contact',
       name: state.name,
       email: state.email,
-      address1: state.address1,
-      address2: state.address2,
-      city: state.city,
-      st: state.st,
-      zip: state.zip,
+      phone: state.phone,
       message: state.message,
+      address1:
+        state.address1 +
+        ' ' +
+        state.address2 +
+        ', ' +
+        state.city +
+        ', ' +
+        state.st.toUpperCase() +
+        ' ' +
+        state.zip,
     };
 
     fetch('/', {
@@ -52,6 +59,7 @@ const ContactUs = () => {
         setState({
           name: '',
           email: '',
+          phone: '',
           address1: '',
           address2: '',
           city: '',
@@ -137,6 +145,7 @@ const ContactUs = () => {
                 required
                 placeholder="Your name"
                 value={state.name}
+                // oninput={replace(/[^0-9.]/g, '')}
                 onChange={(e) => handleChange(e)}
               />
 
