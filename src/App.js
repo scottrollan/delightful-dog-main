@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './components/Landing';
-import About from './components/Trainers';
-import Services from './components/Services';
-import ContactUs from './components/ContactUs';
-import Training from './components/Training';
-import GuestTrainers from './components/GuestTrainers';
-import Header from './Header';
-import Footer from './Footer';
+import Home from './pages/Landing';
+import About from './pages/Trainers';
+import Services from './pages/Services';
+import ContactUs from './pages/ContactUs';
+import Training from './pages/Training';
+import GuestTrainers from './pages/GuestTrainers';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {

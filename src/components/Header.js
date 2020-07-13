@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from './Header.module.css';
-import NavBar from './components/NavBar';
+import NavBar from './NavBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebook,

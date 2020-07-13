@@ -1,21 +1,18 @@
 @import '../styles/custom-media.css';
 @import '../styles/custom-properties.css';
 
-:root {
-  --read-more-height: 250px;
-}
-
 .picLeft,
 .picRight {
   margin: 3rem 5rem;
   max-width: calc(100% - 10rem);
   padding-bottom: 1.4rem;
-  display: flex;
-  align-items: flex-start;
 }
 
-.picRight {
-  flex-direction: row-reverse;
+.picRight > img {
+  float: right;
+}
+.picLeft > img {
+  float: left;
 }
 .h2 {
   margin-top: 0;
@@ -23,10 +20,12 @@
 
 .pic {
   width: auto;
-  height: 275px;
+  height: var(--pic-height);
   margin: 1.4rem;
   align-self: center;
-  /* max-height: var(--read-more-height); */
+}
+.pic::after {
+  clear: both;
 }
 
 .words {
@@ -77,10 +76,10 @@
 }
 
 .displayYes {
-  display: block !important;
+  display: initial !important;
 }
 .displayNo {
-  display: none;
+  display: none !important;
 }
 .visibilityHidden {
   visibility: hidden;
@@ -92,10 +91,12 @@
     margin: 2rem 5%;
     width: 90%;
     max-width: 90%;
+    display: flex;
     flex-direction: column;
   }
 
   .pic {
+    float: none;
     width: 90%;
     height: auto;
   }

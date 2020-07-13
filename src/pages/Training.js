@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import styles from './Training.module.css';
-import Stripe from './Stripe';
-import DogDivider from './DogDivider';
+import Stripe from '../components/Stripe';
+import DogDivider from '../components/DogDivider';
 import src2 from '../assets/grad.jpg';
 
 class Training extends Component {

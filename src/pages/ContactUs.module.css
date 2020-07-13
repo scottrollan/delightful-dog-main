@@ -1,9 +1,29 @@
-@import "../styles/custom-media.css";
-@import "../styles/custom-properties.css";
+@import '../styles/custom-media.css';
+@import '../styles/custom-properties.css';
 
+.h1Middle {
+  color: var(--delightful-neutral);
+  font-style: italic;
+  font-family: 'Courgette', cursive;
+  margin: 1rem auto;
+}
 .reachOut {
-  width: 100%;
+  display: block;
+  position: relative;
+}
+.reachOutImg {
+  width: 30%;
   height: auto;
+  margin: 0 35%;
+}
+.reachOut:before {
+  display: block;
+  position: absolute;
+  content: '';
+  width: 30%;
+  height: 100%;
+  margin: 0 35%;
+  box-shadow: inset 0 0 12px 12px white;
 }
 #contactArea {
   display: flex;
@@ -49,7 +69,10 @@
   margin: 0.5em 0;
   box-sizing: border-box;
 }
-
+input,
+textarea {
+  border: 1px solid var(--color-dark-gray);
+}
 .input {
   flex-basis: 45%;
 }
@@ -59,16 +82,17 @@
 }
 .stZip {
   flex-basis: 45%;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
   box-sizing: border-box;
 }
 #st {
-  float: left;
   width: 40%;
   margin: 0;
   box-sizing: border-box;
 }
 #zip {
-  float: right;
   width: 55%;
   box-sizing: border-box;
 }
@@ -105,13 +129,22 @@
 }
 .contactBottomImage {
   border-radius: 50%;
-  height: 100%; 
+  height: 100%;
 }
 @media only screen and (max-width: 899px) {
   #contactArea {
     flex-direction: column;
     width: 60%;
     margin: 20px 20%;
+  }
+  .reachOutImg {
+    width: 70%;
+    height: auto;
+    margin: 0 15%;
+  }
+  .reachOut:before {
+    width: 70%;
+    margin: 0 15%;
   }
   .address {
     width: auto;

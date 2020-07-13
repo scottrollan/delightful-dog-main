@@ -5,9 +5,7 @@
   --wide-container: 60rem;
   --narrow-container: 40rem;
 
-
   --font-family-cursive: 'Courgette', sans-serif;
-
 
   /* --font-family-sans: -apple-system, BlinkMacSystemFont, sans-serif; */
 
@@ -16,11 +14,11 @@
   --color-gray: #697a90;
   --color-light-gray: #b4bcc7;
   --color-very-light-gray: #e7ebed;
-  --color-white: #FDFDFD;
+  --color-white: #fdfdfd;
   --color-accent: #156dff;
-  --delightful-neutral: #451F1E;
-  --delightful-neutral-muted: #ECE8E8;
-  --delightful-bright: #00979F;
+  --delightful-neutral: #451f1e;
+  --delightful-neutral-muted: #ece8e8;
+  --delightful-bright: #00979f;
 
   /* Typography */
   --unit: 16;
@@ -46,4 +44,8 @@
   --width-medium: 60em;
   --width-large: 80em;
   --width-x-large: 100em;
+
+  /* Heights */
+  --read-more-height: 225px;
+  --pic-height: 260px;
 }

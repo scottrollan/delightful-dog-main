@@ -3,7 +3,7 @@ import styles from './Trainers.module.css';
 import ReactHtmlParser from 'react-html-parser';
 import src2 from '../assets/pekingese.jpg';
 import $ from 'jquery';
-import DogDivider from './DogDivider';
+import DogDivider from '../components/DogDivider';
 
 class GuestTrainers extends Component {
   state = {
@@ -151,6 +151,12 @@ class GuestTrainers extends Component {
     $(`#mask${el}`).removeClass(styles.visibilityHidden);
     $(`#readMore${el}`).removeClass(styles.displayNo);
     $(`#seeLess${el}`).removeClass(styles.displayYes);
+    $('html, body').animate(
+      {
+        scrollTop: $(`#${el}`).offset().top,
+      },
+      500
+    );
   };
 
   render() {
@@ -161,6 +167,13 @@ class GuestTrainers extends Component {
           const ref = t.name.split(' ');
           const refId = ref.join('').toLowerCase() + index;
           const src = t.src;
+          const compiledBio = ReactHtmlParser(t.compiledBio);
+          const elText = [...compiledBio];
+          let words = '';
+          elText.forEach((w) => {
+            words = words.concat(w.props.children[0]);
+          });
+          const wordCount = words.split(' ').length;
           return (
             <div key={refId}>
               <div
@@ -171,23 +184,31 @@ class GuestTrainers extends Component {
                   <div
                     id={refId}
                     className={`${styles.words} ${styles.condensed}`}
+                    style={
+                      wordCount < 200
+                        ? {
+                            minHeight: 'var(--pic-height)',
+                            height: 'auto',
+                            overflowY: 'visible',
+                            maxHeight: '1000px',
+                          }
+                        : null
+                    }
                   >
                     <h2 className={styles.h2}>{t.name}</h2>
                     <div
                       id={`mask${refId}`}
                       className={styles.mask}
-                      // style={{
-                      //   display:
-                      //     $(`#${refId}`).height() > 248 ? 'inherit' : 'none',
-                      // }}
+                      style={{ display: wordCount < 200 ? 'none' : 'initial' }}
                     ></div>
-                    <span>{ReactHtmlParser(t.compiledBio)}</span>
+                    <span id={`words${refId}`}>{compiledBio}</span>
                   </div>
                   <button
                     id={`readMore${refId}`}
                     value={refId}
                     onClick={(event) => this.readMore(event)}
                     className={styles.button}
+                    style={{ display: wordCount < 200 ? 'none' : 'initial' }}
                   >
                     Read More
                   </button>

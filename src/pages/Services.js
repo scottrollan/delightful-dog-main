@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import styles from './Services.module.css';
-import Stripe from './Stripe';
+import Stripe from '../components/Stripe';
 import src2 from '../assets/doodle.jpg';
 
 class Services extends Component {

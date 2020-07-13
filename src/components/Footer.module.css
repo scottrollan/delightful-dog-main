@@ -1,5 +1,5 @@
-@import './styles/custom-properties.css';
-@import './styles/custom-media.css';
+@import '../styles/custom-properties.css';
+@import '../styles/custom-media.css';
 
 .root {
   color: var(--color-black, #333);
@@ -8,7 +8,6 @@
   padding: 2rem 0;
   text-align: center;
 }
-
 
 .text {
   text-align: center;
