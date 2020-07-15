@@ -1,5 +1,5 @@
-@import "../styles/custom-media.css";
-@import "../styles/custom-properties.css";
+@import '../styles/custom-media.css';
+@import '../styles/custom-properties.css';
 
 .containerServices {
   width: var(--wide-container);
@@ -42,7 +42,7 @@
 .h2Middle {
   color: var(--delightful-neutral);
   font-style: italic;
-  font-family: "Courgette", cursive;
+  font-family: 'Courgette', cursive;
 }
 
 .bottomImageHolder {
@@ -53,13 +53,13 @@
 
 .servicesBottomImage {
   border-radius: 50%;
-  height: 100%; 
+  height: 100%;
 }
 
 @media screen and (max-width: 767px) {
   .flexWrapperServices {
     flex-direction: column-reverse;
-    padding: 0 5%;
+    padding: 0 10%;
   }
   #imageDivServices,
   #wordsDivServices {

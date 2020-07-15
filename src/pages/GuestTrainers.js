@@ -74,60 +74,71 @@ class GuestTrainers extends Component {
           const refId = ref.join('').toLowerCase() + index;
           const src = t.src;
           const compiledBio = ReactHtmlParser(t.compiledBio);
-          const elText = [...compiledBio];
           let words = '';
-          elText.forEach((w) => {
-            words = words.concat(w.props.children[0]);
+          const bioText = [...compiledBio];
+          bioText.forEach((w) => {
+            if (w.props.children.length === 0) {
+              words = words.concat(' ');
+            } else if (w.props.children.length > 1) {
+              w.props.children.forEach((subW) => {
+                words = words.concat(' ', subW.props.children[0]);
+              });
+            } else {
+              words = words.concat(' ', w.props.children[0]);
+            }
           });
+          console.log(compiledBio, words);
           const wordCount = words.split(' ').length;
+          console.log(wordCount);
           return (
             <div key={refId}>
               <div
                 className={index % 2 === 0 ? styles.picLeft : styles.picRight}
               >
                 <img src={src} alt="" className={styles.pic} />
-                <div>
+                {/* <div> */}
+                <div
+                  id={refId}
+                  className={`${styles.words} ${styles.condensed}`}
+                  style={
+                    wordCount < 200
+                      ? {
+                          minHeight: 'var(--pic-height)',
+                          height: 'auto',
+                          overflowY: 'visible',
+                          maxHeight: 'none',
+                          display: 'contents',
+                        }
+                      : null
+                  }
+                >
+                  <h2 className={styles.h2}>{t.name}</h2>
                   <div
-                    id={refId}
-                    className={`${styles.words} ${styles.condensed}`}
-                    style={
-                      wordCount < 200
-                        ? {
-                            minHeight: 'var(--pic-height)',
-                            height: 'auto',
-                            overflowY: 'visible',
-                            maxHeight: '1000px',
-                          }
-                        : null
-                    }
-                  >
-                    <h2 className={styles.h2}>{t.name}</h2>
-                    <div
-                      id={`mask${refId}`}
-                      className={styles.mask}
-                      style={{ display: wordCount < 200 ? 'none' : 'initial' }}
-                    ></div>
-                    <span id={`words${refId}`}>{compiledBio}</span>
-                  </div>
-                  <button
-                    id={`readMore${refId}`}
-                    value={refId}
-                    onClick={(event) => this.readMore(event)}
-                    className={styles.button}
+                    id={`mask${refId}`}
+                    className={styles.mask}
                     style={{ display: wordCount < 200 ? 'none' : 'initial' }}
-                  >
-                    Read More
-                  </button>
-                  <button
-                    id={`seeLess${refId}`}
-                    value={refId}
-                    onClick={(event) => this.seeLess(event)}
-                    className={styles.button}
-                    style={{ display: 'none' }}
-                  >
-                    See Less
-                  </button>
+                  ></div>
+                  <span id={`words${refId}`}>{compiledBio}</span>
                 </div>
+                <button
+                  id={`readMore${refId}`}
+                  value={refId}
+                  onClick={(event) => this.readMore(event)}
+                  className={styles.button}
+                  style={{ display: wordCount < 200 ? 'none' : 'initial' }}
+                >
+                  Read More
+                </button>
+                <button
+                  id={`seeLess${refId}`}
+                  value={refId}
+                  onClick={(event) => this.seeLess(event)}
+                  className={styles.button}
+                  style={{ display: 'none' }}
+                >
+                  See Less
+                </button>
+                {/* </div> */}
               </div>
               <DogDivider
                 style={{

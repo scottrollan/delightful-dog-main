@@ -53,6 +53,7 @@
 
 .expanded {
   height: auto;
+  display: inherit;
 }
 
 .button {

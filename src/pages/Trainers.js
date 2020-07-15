@@ -73,13 +73,17 @@ class Trainers extends Component {
           const refId = ref.join('').toLowerCase() + index;
           const src = t.src;
           const compiledBio = ReactHtmlParser(t.compiledBio);
-          const elText = [...compiledBio];
+          const bioText = [...compiledBio];
           let words = '';
-          elText.forEach((w) => {
-            words = words.concat(w.props.children[0]);
+          bioText.forEach((w) => {
+            if (w.props.children.length === 0) {
+              words = words.concat(' ');
+            } else {
+              words = words.concat(w.props.children[0]);
+            }
           });
           const wordCount = words.split(' ').length;
-
+          console.log(wordCount);
           return (
             <div key={refId}>
               <div
@@ -96,7 +100,8 @@ class Trainers extends Component {
                             minHeight: 'var(--pic-height)',
                             height: 'auto',
                             overflowY: 'visible',
-                            maxHeight: '1000px',
+                            maxHeight: 'none',
+                            display: 'contents',
                           }
                         : null
                     }
