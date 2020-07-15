@@ -31,7 +31,7 @@ class Header extends Component {
             </a>
             <a
               className={styles.contactBtn}
-              href="email:info@delightful-dog.com"
+              href="mailto:info@delightful-dog.com?subject=Contact from website."
             >
               info@delightful-dog.com
             </a>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { fetchServices } from '../api/client';
 import ReactHtmlParser from 'react-html-parser';
 import styles from './Services.module.css';
 import Stripe from '../components/Stripe';
@@ -13,16 +14,8 @@ class Services extends Component {
   getServices = async () => {
     let descArray = [];
     let services = [];
-    const sanityClient = require('@sanity/client');
-    const client = sanityClient({
-      projectId: 'iln0s9zc',
-      dataset: 'production',
-      token: '',
-      useCdn: false, // `false` if you want to ensure fresh data
-    });
-    const result = await client.fetch(
-      '*[_type == "service"] | order(displayOrder asc)'
-    );
+
+    const result = await fetchServices;
     // .then((result) => {
     result.forEach((service) => {
       services = [...services, service];

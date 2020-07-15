@@ -125,7 +125,10 @@ const ContactUs = () => {
           <p className={styles.p}>Marietta, GA 30068</p>
           <h5 className={styles.h5}>
             E-mail us:{' '}
-            <a className={styles.href} href="mailto:info@delightful-dog.com">
+            <a
+              className={styles.href}
+              href="mailto:info@delightful-dog.com?subject=Contact from website."
+            >
               info@delightful-dog.com
             </a>
           </h5>

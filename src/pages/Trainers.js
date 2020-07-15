@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import styles from './Trainers.module.css';
+import { fetchTrainers } from '../api/client';
+import { compileRichText, compiledParagraph } from '../api/compileRichText';
 import ReactHtmlParser from 'react-html-parser';
 import src2 from '../assets/whiteFluffy.jpg';
 import $ from 'jquery';
@@ -13,117 +15,18 @@ class Trainers extends Component {
   getTrainers = async () => {
     let trainers = [];
     let bioStr = ``;
-    const sanityClient = require('@sanity/client');
-    const client = sanityClient({
-      projectId: 'iln0s9zc',
-      dataset: 'production',
-      token: '',
-      useCdn: false,
-    });
-    const trainer = await client.fetch(
-      '*[category == "permanent trainer"] | order(displayOrder asc)'
-    );
-    // .then(trainer => {
+
+    const trainer = await fetchTrainers;
     trainer.forEach((person) => {
       const rawRef = person.image.asset._ref;
       const refArray = rawRef.split('-');
       const src = `https://cdn.sanity.io/images/iln0s9zc/production/${refArray[1]}-${refArray[2]}.${refArray[3]}`;
       person['src'] = src;
-      trainers.push(person);
+      trainers = [...trainers, person];
       const bio = person.bio;
       bio.forEach((paragraph) => {
-        //for each item in bio array
-        let compiledParagraph = '';
-        let hrefArray = [];
-        let paragraphSegment = '';
-        //listItem is only present if the segment is "<li>" type,
-        //if no listItem and children.length equal to 1, then entire
-        //segment is simple paragraph text with no marks (em, u,..)
-        if (!('listItem' in paragraph) && paragraph.markDefs.length === 0) {
-          compiledParagraph = `<p>${paragraph.children[0].text}</p>`;
-        } else {
-          if (paragraph.markDefs.length > 0) {
-            // markDefs only contains an item if there is a 'link'
-            paragraph.markDefs.forEach((hrefObj) => {
-              const href_key = {
-                _key: hrefObj._key,
-                href: hrefObj.href,
-              };
-              hrefArray.push(href_key); //creates an array of all the hrefs  with reference #s for <a> tags in a paragraph
-            });
-          }
-          const paragraphSegments = paragraph.children;
-          //for each segment of paragraphs containing any extra tags
-          //like <u> <em> <i>, or links, or listItems
-          paragraphSegments.forEach((segment) => {
-            let text = segment.text;
-            const marks = segment.marks;
-
-            //if there is a <em>, <u> etc.
-            if (marks.length > 0) {
-              const mark = marks[0];
-              const richText = [
-                'em',
-                'strong',
-                'underline',
-                'strike-through',
-                'code',
-              ];
-
-              if (richText.includes(mark)) {
-                let innerText = text;
-                marks.forEach((t) => {
-                  let tag = '';
-                  switch (t) {
-                    case 'em':
-                      tag = 'em';
-                      break;
-                    case 'strong':
-                      tag = 'strong';
-                      break;
-                    case 'strike-through':
-                      tag = 'strike';
-                      break;
-                    case 'underline':
-                      tag = 'u';
-                      break;
-                    case 'code':
-                      tag = 'code';
-                      break;
-                    default:
-                      break;
-                  }
-
-                  innerText = `<${tag}>${innerText}</${tag}>`;
-                });
-                paragraphSegment = paragraphSegment.concat(innerText);
-              } else {
-                hrefArray.forEach((h) => {
-                  if (h._key === mark) {
-                    //if marks[0] is something like '3ae70bbe4sa' vs 'em' or 'strong'
-                    const assignedHref = h.href;
-                    paragraphSegment = paragraphSegment.concat(
-                      `<a href=${assignedHref}>${text}</a>`
-                    );
-                  }
-                });
-              }
-            } else if (paragraph['listItem']) {
-              paragraphSegment = paragraphSegment.concat(
-                `<p style="margin-top: 1rem; font-weight: 500;">&#9642&nbsp&nbsp&nbsp${text}</p>`
-              );
-            } else {
-              paragraphSegment = paragraphSegment.concat(
-                `<span>${text}</span>`
-              );
-            }
-          });
-        } // end of forEach(segment
-        compiledParagraph = compiledParagraph.concat(paragraphSegment);
+        compileRichText(paragraph);
         bioStr = bioStr.concat(compiledParagraph);
-        this.setState({
-          hasLink: false,
-        });
       }); // end paragraph forEach
       person['compiledBio'] = bioStr;
       bioStr = '';

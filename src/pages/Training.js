@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { fetchTrainingCourses } from '../api/client';
 import ReactHtmlParser from 'react-html-parser';
 import styles from './Training.module.css';
 import Stripe from '../components/Stripe';
@@ -13,23 +14,14 @@ class Training extends Component {
   getCourses = async () => {
     let coursesArray = [];
     let courses = [];
-    const sanityClient = require('@sanity/client');
-    const client = sanityClient({
-      projectId: 'iln0s9zc',
-      dataset: 'production',
-      token: '',
-      useCdn: false,
-    });
-    const result = await client.fetch(
-      '*[_type == "training"] | order(displayOrder asc)'
-    );
-    // .then(result => {
-    result.forEach((course) => {
-      courses.push(course);
+
+    const service = await fetchTrainingCourses;
+    service.forEach((course) => {
+      courses = [...courses, course];
       this.setState({
-        courses: courses,
+        courses,
       });
-    }); //end service.map()
+    }); //end service.forEach()
     courses.forEach((c) => {
       let blurb = ``;
       let ulCreated = this.state.ulCreated;
