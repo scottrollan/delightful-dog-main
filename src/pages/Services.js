@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { fetchServices } from '../api/client';
+import { compileRichText, compiledParagraph } from '../api/compileRichText';
 import ReactHtmlParser from 'react-html-parser';
 import styles from './Services.module.css';
 import Stripe from '../components/Stripe';
@@ -8,56 +9,32 @@ import src2 from '../assets/doodle.jpg';
 class Services extends Component {
   state = {
     services: [],
-    ulCreated: false,
   };
 
   getServices = async () => {
-    let descArray = [];
     let services = [];
+    let serviceDesc = '';
 
-    const result = await fetchServices;
-    // .then((result) => {
-    result.forEach((service) => {
+    services = await fetchServices;
+    services.forEach((service) => {
+      const rawRef = service.image.asset._ref;
+      const refArray = rawRef.split('-');
+      const src = `https://cdn.sanity.io/images/iln0s9zc/production/${refArray[1]}-${refArray[2]}.${refArray[3]}`;
+      service['src'] = src;
       services = [...services, service];
-      this.setState({ services });
-    }); //end service.map()
-    services.forEach((s) => {
-      let blurb = ``;
-      let ulCreated = this.state.ulCreated;
-      descArray = s.description;
-      descArray.forEach((d) => {
-        let bulleted = false;
-        let text = d.children[0].text;
-        if (d['listItem']) {
-          bulleted = true;
-        }
-        if (d.children[0].text === '') {
-          return;
-        } else if (bulleted && !ulCreated) {
-          const str = `<ul style="list-style-type: square; list-style-position: insided;"><li>${text}</li>`;
-          blurb = blurb.concat(str);
-          ulCreated = true;
-        } else if (bulleted && ulCreated) {
-          const str = `<li>${text}</li>`;
-          blurb = blurb.concat(str);
-        } else if (!bulleted && ulCreated) {
-          blurb = blurb.concat(`</ul><p>${text}</p>`);
-        } else if (!bulleted && !ulCreated) {
-          blurb = blurb.concat(`<p>${text}</p>`);
-        }
-      });
-      let strLength = blurb.length;
-      const lastTag = blurb.substring(strLength - 5);
-      if (lastTag === '</li>') {
-        //if the last five characters were "</li>""
-        blurb = blurb.concat('</ul>'); //adds </ul>
-      }
-      s['compiledDesc'] = blurb;
-    });
-    this.setState({ services: services });
-    // });
-  };
+      const desc = service.description;
+      desc.forEach((paragraph) => {
+        compileRichText(paragraph);
+        serviceDesc = serviceDesc.concat(compiledParagraph);
+      }); // end paragraph forEach
+      service['compiledDesc'] = serviceDesc;
+      serviceDesc = '';
 
+      this.setState({
+        services,
+      });
+    }); //end trainer.map(person =>
+  };
   componentDidMount() {
     this.getServices();
   }

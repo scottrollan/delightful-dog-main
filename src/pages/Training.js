@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { fetchTrainingCourses } from '../api/client';
+import { compileRichText, compiledParagraph } from '../api/compileRichText';
 import ReactHtmlParser from 'react-html-parser';
 import styles from './Training.module.css';
 import Stripe from '../components/Stripe';
@@ -12,52 +13,25 @@ class Training extends Component {
   };
 
   getCourses = async () => {
-    let coursesArray = [];
     let courses = [];
+    let courseDesc = ``;
 
-    const service = await fetchTrainingCourses;
-    service.forEach((course) => {
+    courses = await fetchTrainingCourses;
+    courses.forEach((course) => {
       courses = [...courses, course];
+      const desc = course.description;
+      desc.forEach((paragraph) => {
+        compileRichText(paragraph);
+        courseDesc = courseDesc.concat(compiledParagraph);
+      }); // end paragraph forEach
+      course['compiledDesc'] = courseDesc;
+      courseDesc = '';
+
       this.setState({
         courses,
       });
-    }); //end service.forEach()
-    courses.forEach((c) => {
-      let blurb = ``;
-      let ulCreated = this.state.ulCreated;
-      coursesArray = c.description;
-      coursesArray.forEach((t) => {
-        let bulleted = false;
-        let text = t.children[0].text;
-        if (t['listItem']) {
-          bulleted = true;
-        }
-        if (t.children[0].text === '') {
-          return;
-        } else if (bulleted && !ulCreated) {
-          const str = `<ul><li>${text}</li>`;
-          blurb = blurb.concat(str);
-          ulCreated = true;
-        } else if (bulleted && ulCreated) {
-          const str = `<li>${text}</li>`;
-          blurb = blurb.concat(str);
-        } else if (!bulleted && ulCreated) {
-          blurb = blurb.concat(`</ul><p>${text}</p>`);
-        } else if (!bulleted && !ulCreated) {
-          blurb = blurb.concat(`<p>${text}</p>`);
-        }
-      });
-      let strLength = blurb.length;
-      const lastTag = blurb.substring(strLength - 5); //if the last tag was </li>
-      if (lastTag === '</li>') {
-        blurb = blurb.concat('</ul>'); //adds </ul>
-      }
-      c['compiledDesc'] = blurb;
-    });
-    this.setState({ courses: courses });
-    // });
+    }); //end trainer.map(person =>
   };
-
   componentDidMount() {
     this.getCourses();
   }
@@ -66,7 +40,7 @@ class Training extends Component {
     const src1 =
       'https://cdn.sanity.io/images/iln0s9zc/production/117a1adf878ad66f83abc8ac4d9b0afddbd29a32-3234x1796.jpg';
 
-    const courses = this.state.courses;
+    const courses = [...this.state.courses];
     return (
       <section className={styles.container}>
         <div className={styles.topImageHolder}>
