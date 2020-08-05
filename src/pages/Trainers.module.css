@@ -1,6 +1,12 @@
 @import '../styles/custom-media.css';
 @import '../styles/custom-properties.css';
 
+:root {
+  /* Heights */
+  --read-more-height: 225px;
+  --pic-height: 260px;
+}
+
 .picLeft,
 .picRight {
   margin: 3rem 5rem;
@@ -14,7 +20,7 @@
 .picLeft > img {
   float: left;
 }
-.h2 {
+.name {
   margin-top: 0;
 }
 
@@ -45,6 +51,8 @@
 }
 
 .condensed {
+  display: flex;
+  flex-direction: column;
   position: relative;
   max-height: var(--read-more-height);
   margin: 1.4rem 1.4rem 0 1.4rem;
@@ -52,6 +60,8 @@
 }
 
 .expanded {
+  display: flex;
+  flex-direction: column;
   height: auto;
   display: inherit;
 }

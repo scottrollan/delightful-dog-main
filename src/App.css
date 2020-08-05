@@ -24,12 +24,3 @@
   font-size: calc(10px + 2vmin);
   color: var(--color-black);
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

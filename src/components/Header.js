@@ -40,6 +40,7 @@ class Header extends Component {
               href="https://www.facebook.com/DelightfulDogMarietta?fref=ts"
               target="_blank"
               rel="noopener noreferrer"
+              className={styles.social}
             >
               <FontAwesomeIcon
                 className={styles.icon}
@@ -52,6 +53,7 @@ class Header extends Component {
               href="https://www.instagram.com/delightfuldog/"
               target="_blank"
               rel="noopener noreferrer"
+              className={styles.social}
             >
               <FontAwesomeIcon
                 className={styles.icon}
@@ -64,6 +66,7 @@ class Header extends Component {
               href="https://twitter.com/adoptagolden?lang=en"
               target="_blank"
               rel="noopener noreferrer"
+              className={styles.social}
             >
               <FontAwesomeIcon
                 className={styles.icon}

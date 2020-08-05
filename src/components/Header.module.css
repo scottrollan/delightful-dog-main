@@ -37,6 +37,7 @@
   font-size: x-large;
   margin: 0.7em 1.5vw 0;
 }
+
 .contactBtn:hover,
 .icon:hover {
   opacity: 0.7;
@@ -48,6 +49,7 @@
   text-decoration: none;
   text-transform: uppercase;
   padding: 1rem 1.5rem;
+  border-radius: 0.5rem 0.5rem 0 0;
   height: 100%;
 }
 
@@ -63,6 +65,9 @@
   background-color: var(--delightful-bright);
 }
 
+#blogTab {
+  background-color: var(--color-white);
+}
 #blogTab:hover {
   background-color: var(--delightful-bright);
 }
@@ -112,7 +117,7 @@
   }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 767px) {
   /* MEDIUM */
   .topInfo {
     flex-direction: column;
@@ -148,5 +153,14 @@
     margin: 8px 0 0 0;
     padding: 0 10%;
     align-self: center;
+  }
+}
+
+/****Mobile Devices****/
+@media (pointer: coarse) {
+  @media screen and (max-width: 899px) {
+    .social {
+      display: none;
+    }
   }
 }

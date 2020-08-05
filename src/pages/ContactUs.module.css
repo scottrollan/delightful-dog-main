@@ -44,7 +44,10 @@
   margin: 0;
   text-align: left;
 }
-
+.address a {
+  text-decoration: none;
+  color: var(--color-black);
+}
 .href {
   text-decoration: none;
   color: var(--delightful-bright);

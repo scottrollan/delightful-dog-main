@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import styles from './Trainers.module.css';
 import { fetchGuestTrainers } from '../api/client';
 import { compileRichText, compiledParagraph } from '../api/compileRichText';
 import ReactHtmlParser from 'react-html-parser';
 import src2 from '../assets/pekingese.jpg';
 import $ from 'jquery';
 import DogDivider from '../components/DogDivider';
+import styles from './Trainers.module.css';
 
 class GuestTrainers extends Component {
   state = {
@@ -59,7 +59,7 @@ class GuestTrainers extends Component {
     $(`#seeLess${el}`).removeClass(styles.displayYes);
     $('html, body').animate(
       {
-        scrollTop: $(`#${el}`).offset().top,
+        scrollTop: $(`#image${el}`).offset().top,
       },
       500
     );
@@ -87,16 +87,18 @@ class GuestTrainers extends Component {
               words = words.concat(' ', w.props.children[0]);
             }
           });
-          console.log(compiledBio, words);
           const wordCount = words.split(' ').length;
-          console.log(wordCount);
           return (
             <div key={refId}>
               <div
                 className={index % 2 === 0 ? styles.picLeft : styles.picRight}
               >
-                <img src={src} alt="" className={styles.pic} />
-                {/* <div> */}
+                <img
+                  src={src}
+                  alt=""
+                  className={styles.pic}
+                  id={`image${refId}`}
+                />
                 <div
                   id={refId}
                   className={`${styles.words} ${styles.condensed}`}
@@ -112,13 +114,15 @@ class GuestTrainers extends Component {
                       : null
                   }
                 >
-                  <h2 className={styles.h2}>{t.name}</h2>
-                  <div
-                    id={`mask${refId}`}
-                    className={styles.mask}
-                    style={{ display: wordCount < 200 ? 'none' : 'initial' }}
-                  ></div>
-                  <span id={`words${refId}`}>{compiledBio}</span>
+                  <h2 className={styles.name}>{t.name}</h2>
+                  <div>
+                    <div
+                      id={`mask${refId}`}
+                      className={styles.mask}
+                      style={{ display: wordCount < 200 ? 'none' : 'initial' }}
+                    ></div>
+                    <span id={`words${refId}`}>{compiledBio}</span>
+                  </div>
                 </div>
                 <button
                   id={`readMore${refId}`}
@@ -138,7 +142,6 @@ class GuestTrainers extends Component {
                 >
                   See Less
                 </button>
-                {/* </div> */}
               </div>
               <DogDivider
                 style={{

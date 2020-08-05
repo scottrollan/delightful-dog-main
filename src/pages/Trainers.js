@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import styles from './Trainers.module.css';
 import { fetchTrainers } from '../api/client';
 import { compileRichText, compiledParagraph } from '../api/compileRichText';
 import ReactHtmlParser from 'react-html-parser';
 import src2 from '../assets/whiteFluffy.jpg';
 import $ from 'jquery';
 import DogDivider from '../components/DogDivider';
+import styles from './Trainers.module.css';
 
 class Trainers extends Component {
   state = {
@@ -106,7 +106,7 @@ class Trainers extends Component {
                         : null
                     }
                   >
-                    <h2 className={styles.h2}>{t.name}</h2>
+                    <h2 className={styles.name}>{t.name}</h2>
                     <div
                       id={`mask${refId}`}
                       className={styles.mask}

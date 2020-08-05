@@ -120,11 +120,14 @@ const ContactUs = () => {
       <div id={styles.contactArea}>
         <div className={styles.address}>
           <h3 className={styles.h3}>The Delightful Dog</h3>
-          <p className={styles.p}>4958 Lower Roswell Rd.</p>
-          <p className={styles.p}>Suite 124</p>
-          <p className={styles.p}>Marietta, GA 30068</p>
+          <a href="https://maps.google.com/?q=4958+Lower+Roswell+Rd+%23124Marietta,+Marietta,+GA+30068">
+            <a href="https://maps.apple.com/maps?q=4958+Lower+Roswell+Rd+%23124Marietta,+Marietta,+GA+30068">
+              <p className={styles.p}>4958 Lower Roswell Rd.</p>
+              <p className={styles.p}>Suite 124</p>
+              <p className={styles.p}>Marietta, GA 30068</p>
+            </a>
+          </a>
           <h5 className={styles.h5}>
-            E-mail us:{' '}
             <a
               className={styles.href}
               href="mailto:info@delightful-dog.com?subject=Contact from website."
@@ -134,7 +137,6 @@ const ContactUs = () => {
           </h5>
           <h5 className={styles.h5}>
             {' '}
-            or call us:{' '}
             <a className={styles.href} href="tel:6782733700">
               678.273.3700
             </a>
