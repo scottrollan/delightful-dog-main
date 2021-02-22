@@ -185,7 +185,7 @@ const ContactUs = () => {
                 type="tel"
                 value={state.phone}
                 name="phone"
-                placeholder="Phone, ex. (111)-111-1111"
+                placeholder="Phone, (111)-111-1111"
                 onInput={phoneMask}
                 onChange={(e) => handleChange(e)}
               />

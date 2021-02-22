@@ -29,11 +29,11 @@ class Services extends Component {
       }); // end paragraph forEach
       service['compiledDesc'] = serviceDesc;
       serviceDesc = '';
-
-      this.setState({
-        services,
-      });
     }); //end trainer.map(person =>
+
+    this.setState({
+      services,
+    });
   };
   componentDidMount() {
     this.getServices();
