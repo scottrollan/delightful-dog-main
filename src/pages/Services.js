@@ -15,8 +15,8 @@ class Services extends Component {
     let services = [];
     let serviceDesc = '';
 
-    services = await fetchServices;
-    services.forEach((service) => {
+    const allServices = await fetchServices;
+    allServices.forEach((service) => {
       const rawRef = service.image.asset._ref;
       const refArray = rawRef.split('-');
       const src = `https://cdn.sanity.io/images/iln0s9zc/production/${refArray[1]}-${refArray[2]}.${refArray[3]}`;
@@ -29,11 +29,11 @@ class Services extends Component {
       }); // end paragraph forEach
       service['compiledDesc'] = serviceDesc;
       serviceDesc = '';
-    }); //end trainer.map(person =>
-
-    this.setState({
-      services,
-    });
+      this.setState({
+        services,
+      });
+    }); //end services.map(service =>
+    console.log(services);
   };
   componentDidMount() {
     this.getServices();
