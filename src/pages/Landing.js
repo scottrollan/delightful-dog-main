@@ -17,7 +17,7 @@ const Landing = () => {
           <p className={styles.centerThis}>
             <Link className={styles.button} to="/services">
               Our Services
-            </Link>{' '}
+            </Link>
             <Link className={styles.button} to="/training">
               Start Training
             </Link>

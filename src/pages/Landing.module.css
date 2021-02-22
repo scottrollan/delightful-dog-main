@@ -2,9 +2,6 @@
 @import '../styles/custom-properties.css';
 @import url('https://fonts.googleapis.com/css?family=Courgette&display=swap');
 
-.Landing {
-  /* background-image: url('../assets/blueEyedAussie.jpg'); */
-}
 .flexDiv {
   background-image: url('../assets/blueEyedAussie.jpg');
   background-repeat: no-repeat;
