@@ -33,7 +33,6 @@ class Services extends Component {
         services,
       });
     }); //end services.map(service =>
-    console.log(services);
   };
   componentDidMount() {
     this.getServices();

@@ -16,8 +16,8 @@ class Training extends Component {
     let courses = [];
     let courseDesc = ``;
 
-    courses = await fetchTrainingCourses;
-    courses.forEach((course) => {
+    const allCourses = await fetchTrainingCourses;
+    allCourses.forEach((course) => {
       courses = [...courses, course];
       const desc = course.description;
       desc.forEach((paragraph) => {
