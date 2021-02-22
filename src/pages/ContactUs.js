@@ -11,7 +11,7 @@ const ContactUs = () => {
   const [state, setState] = useState({
     name: '',
     email: '',
-    phone: null,
+    phone: '',
     address1: '',
     address2: '',
     city: '',
@@ -121,11 +121,9 @@ const ContactUs = () => {
         <div className={styles.address}>
           <h3 className={styles.h3}>The Delightful Dog</h3>
           <a href="https://maps.google.com/?q=4958+Lower+Roswell+Rd+%23124Marietta,+Marietta,+GA+30068">
-            <a href="https://maps.apple.com/maps?q=4958+Lower+Roswell+Rd+%23124Marietta,+Marietta,+GA+30068">
-              <p className={styles.p}>4958 Lower Roswell Rd.</p>
-              <p className={styles.p}>Suite 124</p>
-              <p className={styles.p}>Marietta, GA 30068</p>
-            </a>
+            <p className={styles.p}>4958 Lower Roswell Rd.</p>
+            <p className={styles.p}>Suite 124</p>
+            <p className={styles.p}>Marietta, GA 30068</p>
           </a>
           <h5 className={styles.h5}>
             <a
@@ -190,7 +188,7 @@ const ContactUs = () => {
                 onChange={(e) => handleChange(e)}
               />
             </div>
-            <div className={styles.line}>
+            {/* <div className={styles.line}>
               <input
                 className={styles.input}
                 type="text"
@@ -240,7 +238,7 @@ const ContactUs = () => {
                   onChange={(e) => handleChange(e)}
                 />
               </span>
-            </div>
+            </div> */}
 
             <div>
               <textarea
