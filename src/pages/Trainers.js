@@ -83,7 +83,6 @@ class Trainers extends Component {
             }
           });
           const wordCount = words.split(' ').length;
-          console.log(wordCount);
           return (
             <div key={refId}>
               <div
