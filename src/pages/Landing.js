@@ -23,7 +23,6 @@ const Landing = () => {
           </p>
         </div>
       </div>
-
       {/* <Services /> */}
     </section>
   );

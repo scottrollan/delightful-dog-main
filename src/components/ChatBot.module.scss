@@ -1,0 +1,103 @@
+@import '../styles/custom-properties.css';
+
+.backdrop {
+  display: none;
+  z-index: 97;
+  background-color: var(--color-overlay);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.chatButton {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--color-gray);
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.dogHeadset {
+  border-radius: 50%;
+  border: 3px solid var(--delightful-bright);
+  height: 4rem;
+  width: 4rem;
+}
+.dogHeadset:hover {
+  animation: shake 0.5s;
+}
+
+.bigX {
+  font-size: 4rem;
+  color: var(--delightful-neutral);
+  background: radial-gradient(
+    var(--color-white),
+    var(--color-white),
+    var(--color-white),
+    transparent,
+    transparent
+  );
+  line-height: 3rem;
+  /* border-radius: 50%; */
+}
+
+@mixin keyframe-shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+@-moz-keyframes shake {
+  @include keyframe-shake;
+}
+@-ms-keyframes shake {
+  @include keyframe-shake;
+}
+@-o-keyframes shake {
+  @include keyframe-shake;
+}
+@-webkit-keyframes shake {
+  @include keyframe-shake;
+}
+@keyframes shake {
+  @include keyframe-shake;
+}

@@ -6,6 +6,7 @@
 .App {
   background-color: var(--color-white);
   overflow-x: hidden;
+  position: relative;
 }
 
 @media (prefers-reduced-motion: no-preference) {

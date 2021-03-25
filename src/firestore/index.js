@@ -32,6 +32,8 @@ const db = firebaseApp.firestore();
 export const helpChatsCollection = db.collection('helpChats');
 
 ////////// Firebase messaging //////////
+let messagingToken;
+let messagePayload = {};
 const messaging = firebase.messaging();
 messaging
   .requestPermission()
@@ -40,8 +42,17 @@ messaging
     return messaging.getToken();
   })
   .then((token) => {
+    messagingToken = token;
     console.log(token);
   })
   .catch((error) => {
     console.log(`Error Occurred: ${error}`);
   });
+
+messaging.onMessage((payload) => {
+  //payload = {from, priority, notification, collapse_key}
+  //payload.notification = {title, body, icon}
+  messagePayload = { ...payload.notification };
+});
+
+export { messagingToken, messagePayload };

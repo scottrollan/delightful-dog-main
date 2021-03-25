@@ -56,11 +56,6 @@
   box-sizing: border-box;
   align-self: stretch;
 }
-.button:hover {
-  background-color: var(--color-gray);
-  color: var(--color-white);
-  text-decoration: none;
-}
 
 @media screen and (max-width: 899px) {
   .h1 {
@@ -72,6 +67,9 @@
     line-height: var(--font-large-large-height);
     padding: 14px 10px;
   }
+}
+.dogHeadset {
+  border-radius: 50%;
 }
 
 @media screen and (max-width: 767px) {
