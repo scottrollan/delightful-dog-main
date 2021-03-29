@@ -26,11 +26,11 @@ export default function ChatBot() {
           onClick={() => handleOpen()}
           style={{ display: showChat ? 'none' : 'inherit' }}
         />
-        <i
+        {/* <i
           className={[`fas fa-times-circle ${styles.bigX}`]}
           onClick={() => handleClose()}
           style={{ display: showChat ? 'inherit' : 'none' }}
-        ></i>
+        ></i> */}
       </div>
 
       <ChatPopup show={showChat} handleClose={handleClose} />

@@ -2,9 +2,9 @@
 
 .modal {
   position: fixed !important;
-  bottom: 5rem;
+  top: 2rem;
   right: 4rem;
-  /* min-width: 400px; */
+  min-width: 600px;
   max-width: 90vw;
 }
 
@@ -29,59 +29,27 @@
   display: flex;
   flex-direction: column;
 }
-.conversation {
-  min-height: 45vh;
-  max-height: 45vh;
-  width: 100%;
-  display: flex;
-}
-.fromUser {
-  text-align: right;
-  align-self: flex-end;
-  display: flex;
-  flex-direction: row-reverse;
-}
-.fromAdmin {
-  text-align: left;
-  align-self: flex-start;
-  display: flex;
-}
-.userBadge,
-.adminBadge,
-.buffer {
-  background-color: var(--delightful-bright);
-  border-radius: 50%;
-  color: var(--color-white);
-  min-height: 2.2rem;
-  min-width: 2.2rem;
-  max-height: 2.2rem;
-  max-width: 2.2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.buffer {
-  background-color: transparent;
-}
-.adminBadge {
-  background-color: var(--delightful-neutral);
-}
 
-.userQuote {
-  margin: 1.5vh 0.6vw;
-  padding: 0.5rem;
-  border-radius: 0.5rem 0 0.5rem 0.5rem;
-  background-color: var(--color-light-gray);
+.bigX {
+  position: relative;
+  right: 2rem;
+  z-index: 9999;
+  cursor: pointer;
+  font-size: 3rem;
+  color: var(--delightful-neutral);
+  background: radial-gradient(
+    var(--color-white),
+    var(--color-white),
+    var(--color-white),
+    transparent,
+    transparent
+  );
+  line-height: 2rem;
+  /* border-radius: 50%; */
 }
-.adminQuote {
-  margin: 1.5vh 0.6vw;
-  padding: 0.5rem;
-  border-radius: 0 0.5rem 0.5rem 0.5rem;
-  background-color: var(--color-very-light-gray);
-}
-
 @media screen and (max-width: 680px) {
   .modal {
+    min-width: 90vw;
     right: 5vw;
   }
 }

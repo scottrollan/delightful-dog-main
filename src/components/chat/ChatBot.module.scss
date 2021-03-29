@@ -31,9 +31,11 @@
   border: 3px solid var(--delightful-bright);
   height: 4rem;
   width: 4rem;
+  transition: all 0.2s ease-in-out;
 }
 .dogHeadset:hover {
-  animation: shake 0.5s;
+  transform: scale(1.1);
+  // animation: shake 0.5s;
 }
 
 .bigX {
