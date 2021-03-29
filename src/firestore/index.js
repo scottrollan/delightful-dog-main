@@ -24,6 +24,10 @@ const storage = firebase.storage();
 export const storageRef = storage.ref();
 //to store images/files ex: export const usersRef = storageRef.child('images/users');
 
+////////// Utilities //////////
+export const timeStamp = firebase.firestore.Timestamp;
+export const fsArrayUnion = firebase.firestore.FieldValue.arrayUnion;
+
 ////////// Firestore auth //////////
 const auth = firebaseApp.firestore();
 

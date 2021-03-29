@@ -1,4 +1,4 @@
-@import '../styles/custom-properties.css';
+@import '../../styles/custom-properties.css';
 
 .backdrop {
   display: none;
@@ -37,7 +37,7 @@
 }
 
 .bigX {
-  font-size: 4rem;
+  font-size: 3rem;
   color: var(--delightful-neutral);
   background: radial-gradient(
     var(--color-white),
@@ -46,7 +46,7 @@
     transparent,
     transparent
   );
-  line-height: 3rem;
+  line-height: 2rem;
   /* border-radius: 50%; */
 }
 

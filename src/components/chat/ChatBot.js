@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import dogHeadset from '../assets/dogHeadset.jpg';
+import dogHeadset from '../../assets/dogHeadset.jpg';
 import ChatPopup from './ChatPopup';
 import $ from 'jquery';
 import styles from './ChatBot.module.scss';
@@ -21,6 +21,7 @@ export default function ChatBot() {
       <div id="chatButton" className={styles.chatButton}>
         <img
           src={dogHeadset}
+          alt=""
           className={styles.dogHeadset}
           onClick={() => handleOpen()}
           style={{ display: showChat ? 'none' : 'inherit' }}

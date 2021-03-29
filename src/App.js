@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import ChatBot from './components/ChatBot';
+import ChatBot from './components/chat/ChatBot';
 import Home from './pages/Landing';
 import About from './pages/Trainers';
 import Services from './pages/Services';

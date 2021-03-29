@@ -1,0 +1,87 @@
+@import '../../styles/custom-properties.css';
+
+.modal {
+  position: fixed !important;
+  bottom: 5rem;
+  right: 4rem;
+  /* min-width: 400px; */
+  max-width: 90vw;
+}
+
+.modalHeader {
+  background-color: var(--delightful-neutral);
+}
+.modalTitle {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.3rem;
+}
+.titleIcon {
+  margin-right: 1rem;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+}
+.titleWords {
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+}
+.conversation {
+  min-height: 45vh;
+  max-height: 45vh;
+  width: 100%;
+  display: flex;
+}
+.fromUser {
+  text-align: right;
+  align-self: flex-end;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.fromAdmin {
+  text-align: left;
+  align-self: flex-start;
+  display: flex;
+}
+.userBadge,
+.adminBadge,
+.buffer {
+  background-color: var(--delightful-bright);
+  border-radius: 50%;
+  color: var(--color-white);
+  min-height: 2.2rem;
+  min-width: 2.2rem;
+  max-height: 2.2rem;
+  max-width: 2.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.buffer {
+  background-color: transparent;
+}
+.adminBadge {
+  background-color: var(--delightful-neutral);
+}
+
+.userQuote {
+  margin: 1.5vh 0.6vw;
+  padding: 0.5rem;
+  border-radius: 0.5rem 0 0.5rem 0.5rem;
+  background-color: var(--color-light-gray);
+}
+.adminQuote {
+  margin: 1.5vh 0.6vw;
+  padding: 0.5rem;
+  border-radius: 0 0.5rem 0.5rem 0.5rem;
+  background-color: var(--color-very-light-gray);
+}
+
+@media screen and (max-width: 680px) {
+  .modal {
+    right: 5vw;
+  }
+}
