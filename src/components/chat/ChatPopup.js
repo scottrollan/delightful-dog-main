@@ -3,6 +3,7 @@ import UserDetails from './UserDetails';
 import ChatForm from './ChatForm';
 import dogHeadset from '../../assets/dogHeadset.jpg';
 import { Modal } from 'react-bootstrap';
+import $ from 'jquery';
 import styles from './ChatPopup.module.scss';
 
 export default function ChatPopup({ show, handleClose }) {
@@ -11,19 +12,33 @@ export default function ChatPopup({ show, handleClose }) {
     email: '',
     complete: false,
   });
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleUserDetails = (details) => {
     setUserDetails({ ...details });
   };
-
+  //adjust close button position down as modal enlarges
+  $('#messageInput').keydown(() => {
+    const myHeight = $('#chatModal')[0].scrollHeight + 60 ?? 0;
+    $('#bigX').css('top', `calc(${myHeight}px + 0.5rem`);
+  });
+  useEffect(() => {
+    if (modalOpen) {
+      //move close button (#bigX) to below bottom of modal
+      const myHeight = $('#chatModal')[0].scrollHeight + 60 ?? 0;
+      $('#bigX').css('top', `calc(${myHeight}px + 0.5rem`);
+    }
+  });
   return (
     <>
       <Modal
         show={show}
         onHide={handleClose}
+        onShow={() => setModalOpen(true)}
         backdrop={false}
         scrollable
         dialogClassName={styles.modal}
+        id="chatModal"
       >
         <Modal.Header className={styles.modalHeader}>
           <div className={styles.modalTitle}>
@@ -44,6 +59,7 @@ export default function ChatPopup({ show, handleClose }) {
         </div>
       </Modal>
       <i
+        id="bigX"
         className={[`fas fa-times-circle ${styles.bigX}`]}
         onClick={() => handleClose()}
         style={{ display: show ? 'inherit' : 'none' }}

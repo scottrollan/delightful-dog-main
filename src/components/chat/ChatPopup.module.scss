@@ -6,6 +6,7 @@
   right: 4rem;
   min-width: 600px;
   max-width: 90vw;
+  display: flex;
 }
 
 .modalHeader {
@@ -31,25 +32,29 @@
 }
 
 .bigX {
-  position: relative;
-  right: 2rem;
+  position: absolute;
+  right: 4rem;
+  width: 3rem;
+  height: 3rem;
   z-index: 9999;
   cursor: pointer;
   font-size: 3rem;
   color: var(--delightful-neutral);
+  line-height: 1.1;
   background: radial-gradient(
-    var(--color-white),
-    var(--color-white),
-    var(--color-white),
+    circle,
+    var(--color-white) 40%,
     transparent,
     transparent
   );
-  line-height: 2rem;
-  /* border-radius: 50%; */
 }
 @media screen and (max-width: 680px) {
   .modal {
     min-width: 90vw;
-    right: 5vw;
+    max-width: 90vw;
+    right: 4vw;
+  }
+  .bigX {
+    right: 4vw;
   }
 }

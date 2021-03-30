@@ -16,7 +16,7 @@
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  z-index: 9999;
+  z-index: 9998;
   cursor: pointer;
 }
 
@@ -38,19 +38,19 @@
   // animation: shake 0.5s;
 }
 
-.bigX {
-  font-size: 3rem;
-  color: var(--delightful-neutral);
-  background: radial-gradient(
-    var(--color-white),
-    var(--color-white),
-    var(--color-white),
-    transparent,
-    transparent
-  );
-  line-height: 2rem;
-  /* border-radius: 50%; */
-}
+// .bigX {
+//   font-size: 3rem;
+//   color: var(--delightful-neutral);
+//   background: radial-gradient(
+//     var(--color-white),
+//     var(--color-white),
+//     var(--color-white),
+//     transparent,
+//     transparent
+//   );
+//   line-height: 2rem;
+//   /* border-radius: 50%; */
+// }
 
 @mixin keyframe-shake {
   0% {
