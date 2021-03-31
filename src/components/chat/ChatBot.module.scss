@@ -38,20 +38,6 @@
   // animation: shake 0.5s;
 }
 
-// .bigX {
-//   font-size: 3rem;
-//   color: var(--delightful-neutral);
-//   background: radial-gradient(
-//     var(--color-white),
-//     var(--color-white),
-//     var(--color-white),
-//     transparent,
-//     transparent
-//   );
-//   line-height: 2rem;
-//   /* border-radius: 50%; */
-// }
-
 @mixin keyframe-shake {
   0% {
     transform: translate(1px, 1px) rotate(0deg);

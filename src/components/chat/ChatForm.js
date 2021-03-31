@@ -20,7 +20,6 @@ const reducer = (state, action) => {
       return { ...state, message: '', initialChat: false };
     case 'updateConversation':
       const convo = [...action.payload];
-      console.log(`Conversation array: ${convo}`);
       return { ...state, conversation: [...action.payload] };
     default:
       return { ...state };
@@ -60,6 +59,7 @@ export default function ChatForm({ userDetails }) {
       helpChatsCollection
         .doc(newID)
         .set({
+          closed: false,
           userEmail: state.userEmail,
           userName: state.userName,
           conversation: [
