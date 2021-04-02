@@ -19,7 +19,6 @@ const reducer = (state, action) => {
       //reset messageInput & set initialChat
       return { ...state, message: '', initialChat: false };
     case 'updateConversation':
-      const convo = [...action.payload];
       return { ...state, conversation: [...action.payload] };
     default:
       return { ...state };

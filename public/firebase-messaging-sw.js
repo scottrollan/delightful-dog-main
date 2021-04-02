@@ -18,7 +18,7 @@ firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
 
 messaging.setBackgroundMessageHandler(() => {
-  const title = 'You received a new message.';
+  const title = 'You received a response.';
   const options = {
     body: payload.data.status,
   };
