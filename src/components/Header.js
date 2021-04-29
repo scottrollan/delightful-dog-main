@@ -77,7 +77,7 @@ class Header extends Component {
           </div>
           <div className={styles.tabDiv}>
             <a
-              href="https://sanity-delightful-dog-main.netlify.com/"
+              href="https://musing-kalam-21f98c.netlify.app/"
               id={styles.homeTab}
             >
               Home

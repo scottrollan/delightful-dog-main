@@ -67,7 +67,7 @@ class Trainers extends Component {
   render() {
     const trainers = this.state.trainers;
     return (
-      <section>
+      <section style={{ width: '100%' }}>
         {trainers.map((t, index) => {
           const ref = t.name.split(' ');
           const refId = ref.join('').toLowerCase() + index;

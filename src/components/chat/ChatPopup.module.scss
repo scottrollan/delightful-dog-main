@@ -31,22 +31,13 @@
   flex-direction: column;
 }
 
-.bigX {
-  position: absolute;
-  right: 4rem;
-  width: 3rem;
+.closeButton {
   height: 3rem;
   z-index: 9999;
   cursor: pointer;
   font-size: 3rem;
-  color: var(--delightful-neutral);
+  color: var(--color-white);
   line-height: 1.1;
-  background: radial-gradient(
-    circle,
-    var(--color-white) 40%,
-    transparent,
-    transparent
-  );
 }
 @media screen and (max-width: 680px) {
   .modal {
@@ -54,7 +45,7 @@
     max-width: 90vw;
     right: 4vw;
   }
-  .bigX {
+  .closeButton {
     right: 4vw;
   }
 }

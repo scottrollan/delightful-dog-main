@@ -12,29 +12,18 @@ export default function ChatPopup({ show, handleClose }) {
     email: '',
     complete: false,
   });
-  const [modalOpen, setModalOpen] = useState(false);
+  // const [modalOpen, setModalOpen] = useState(false);
 
   const handleUserDetails = (details) => {
     setUserDetails({ ...details });
   };
-  //adjust close button position down as modal enlarges
-  $('#messageInput').keydown(() => {
-    const myHeight = $('#chatModal')[0].scrollHeight + 60 ?? 0;
-    $('#bigX').css('top', `calc(${myHeight}px + 0.5rem`);
-  });
-  useEffect(() => {
-    if (modalOpen) {
-      //move close button (#bigX) to below bottom of modal
-      const myHeight = $('#chatModal')[0].scrollHeight + 60 ?? 0;
-      $('#bigX').css('top', `calc(${myHeight}px + 0.5rem`);
-    }
-  });
+
   return (
     <>
       <Modal
         show={show}
         onHide={handleClose}
-        onShow={() => setModalOpen(true)}
+        // onShow={() => setModalOpen(true)}
         backdrop={false}
         scrollable
         dialogClassName={styles.modal}
@@ -48,22 +37,28 @@ export default function ChatPopup({ show, handleClose }) {
               <h5>How can we help?</h5>
             </div>
           </div>
+          <button className="close">
+            <i
+              className={[`fas fa-times ${styles.closeButton}`]}
+              onClick={() => handleClose()}
+            ></i>
+          </button>
         </Modal.Header>
         <Modal.Body
           style={{ display: userDetails.complete ? 'none' : 'initial' }}
         >
           <UserDetails setUserComplete={handleUserDetails} />
+          {/* <i
+            id="bigX"
+            className={[`fas fa-times-circle ${styles.bigX}`]}
+            onClick={() => handleClose()}
+            style={{ display: show ? 'inherit' : 'none' }}
+          ></i> */}
         </Modal.Body>
         <div style={{ display: userDetails.complete ? 'block' : 'none' }}>
           <ChatForm userDetails={userDetails} />
         </div>
       </Modal>
-      <i
-        id="bigX"
-        className={[`fas fa-times-circle ${styles.bigX}`]}
-        onClick={() => handleClose()}
-        style={{ display: show ? 'inherit' : 'none' }}
-      ></i>
     </>
   );
 }

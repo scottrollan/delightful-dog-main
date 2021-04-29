@@ -1,17 +1,34 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
+import { UserContext } from '../App';
+import Login from './login/Login.js';
+import Logout from './login/Logout.js';
+import * as fs from '../firestore/index';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
 import logoDefault from '../assets/dDWholeLogo.png';
 import logoAltSrc from '../assets/dogOnly.png';
 import textOnly from '../assets/delightfulText.png';
+import { routes } from '../data/navItems';
+import $ from 'jquery';
 import styles from './NavBar.module.css';
 
 const NavBar = (props) => {
-  const navItems = props.navItems;
+  const thisUser = useContext(UserContext);
+  const [loginShow, setLoginShow] = useState(false);
+  const [logoutShow, setLogoutShow] = useState(false);
 
   const expandNavbar = (e) => {
     e.stopPropagation(e);
     props.expandNavbar();
+  };
+  const handleLogin = () => {
+    setLoginShow(true);
+  };
+  const handleLogoutShow = () => {
+    setLogoutShow(true);
+  };
+  const handleLogoutClose = () => {
+    setLogoutShow(false);
   };
 
   return (
@@ -23,6 +40,17 @@ const NavBar = (props) => {
       className={styles.bar}
       style={{ margin: 'auto' }}
     >
+      <Login
+        showLogin={loginShow}
+        handleCloseLogin={() => setLoginShow(false)}
+        handleOpenLogin={() => setLoginShow(false)}
+      />
+      {/* TODO: PASS THE ABOVE FUNTIONS TO LOGIN & LOGOUT */}
+
+      <Logout
+        logoutShow={logoutShow}
+        handleCloseLogout={() => handleLogoutClose()}
+      />
       <Navbar.Brand href="/" className={styles.branding}>
         <span className={styles.logoHolder} href="/">
           <img id={styles.logo} src={logoDefault} alt="" />
@@ -49,7 +77,7 @@ const NavBar = (props) => {
         }}
       >
         <Nav>
-          {navItems.map((item, index) => {
+          {routes.map((item, index) => {
             const { toPath, nav } = item;
             const _id = item.nav.toLowerCase() + index;
             return (
@@ -58,6 +86,19 @@ const NavBar = (props) => {
               </Nav.Link>
             );
           })}
+          {/* LOGIN / LOGOUT BUTTONS */}
+          <Nav.Link
+            style={{ display: thisUser ? 'none' : 'inherit' }}
+            onClick={() => handleLogin()}
+          >
+            Login
+          </Nav.Link>
+          <Nav.Link
+            style={{ display: thisUser ? 'inherit' : 'none' }}
+            onClick={() => handleLogoutShow()}
+          >
+            Logout
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

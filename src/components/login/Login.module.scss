@@ -1,0 +1,15 @@
+@import '../../styles/custom-properties.css';
+
+.body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.button {
+  word-wrap: none;
+  width: 50%;
+  margin: 1rem 0;
+  border: none;
+  background-color: var(--delightful-bright);
+}

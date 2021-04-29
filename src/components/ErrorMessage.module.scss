@@ -1,0 +1,19 @@
+@import '../styles/custom-properties.css';
+
+.loginHeader {
+  color: var(--delightful-neutral);
+  font-style: italic;
+  font-family: 'Courgette', cursive;
+}
+.body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.button {
+  width: 50%;
+  margin: 1rem 0;
+  border: none;
+  background-color: var(--delightful-bright);
+}
