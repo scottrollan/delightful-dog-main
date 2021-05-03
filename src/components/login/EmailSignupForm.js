@@ -28,8 +28,9 @@ export default function EmailSignupForm(props) {
         break;
     }
   };
-  const emailLogin = async (email, password) => {
-    const loginInfo = await fs.signInWithEmail(email, password);
+  const emailLogin = async (event) => {
+    event.preventDefault();
+    const loginInfo = await fs.signInWithEmail(props.email, props.password);
     switch (loginInfo) {
       case 'auth/invalid-email':
         $('#loginBody').hide();
@@ -55,18 +56,25 @@ export default function EmailSignupForm(props) {
         );
         break;
       default:
-        console.log(loginInfo);
-        break;
+        return loginInfo;
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    console.log(e.keyCode);
+    if (e.keyCode === 13) {
+      emailLogin(e);
     }
   };
 
   return (
-    <Form
-      style={styles.form}
-      onSubmit={() => emailLogin(props.email, props.password)}
-    >
+    <Form style={styles.form}>
       <div style={styles.line}>
-        <Form.Group controlId="email" style={styles.input}>
+        <Form.Group
+          controlId="email"
+          style={styles.input}
+          // onSubmit={(e) => emailLogin(e)}
+        >
           <Form.Label srOnly="enter your email address"></Form.Label>
           <Form.Control
             type="email"
@@ -83,6 +91,7 @@ export default function EmailSignupForm(props) {
             value={props.password}
             placeholder="Enter Password"
             onChange={(e) => props.setNewPassword(e.target.value)}
+            onKeyDown={handleKeyPress}
             required
           />
         </Form.Group>
@@ -93,7 +102,8 @@ export default function EmailSignupForm(props) {
             ...styles.input,
             backgroundColor: 'var(--delightful-bright)',
           }}
-          type="submit"
+          onClick={(e) => emailLogin(e)}
+          // type="submit"
         >
           Login
         </Button>

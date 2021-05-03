@@ -17,7 +17,7 @@ export const UserContext = createContext();
 
 const App = () => {
   const thisUser = useAuth() ?? null;
-  console.log(thisUser);
+  console.log(`From App: ${thisUser}`);
   const [navbarExpanded, setNavbarExpanded] = useState(false);
 
   return (

@@ -3,10 +3,8 @@ import { signOut } from '../../firestore/index';
 import { Modal, Button } from 'react-bootstrap';
 
 export default function Logout(props) {
-  const doSignOut = async () => {
-    const signOutInfo = await signOut();
-    console.log(signOutInfo);
-    alert('Check console');
+  const doSignOut = () => {
+    signOut();
   };
 
   return (

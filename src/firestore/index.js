@@ -52,14 +52,8 @@ export const signInWithTwitter = async () => {
   window.location.reload();
 };
 export const signInWithEmail = async (email, password) => {
-  try {
-    await auth.signInWithEmailAndPassword(email, password);
-    //Does the below need to occur?????////////
-    // window.location.reload();
-  } catch (e) {
-    const errorCode = e.code;
-    return errorCode;
-  }
+  await auth.signInWithEmailAndPassword(email, password);
+  window.location.reload();
 };
 
 export const createUserWithEmail = async (email, password) => {

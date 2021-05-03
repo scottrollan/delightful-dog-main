@@ -72,7 +72,7 @@ const NavBar = (props) => {
         id="responsive-navbar-nav"
         style={{
           textAlign: 'right',
-          paddingRight: '2vw',
+          paddingRight: '3vw',
           justifyContent: 'flex-end',
         }}
       >
@@ -86,15 +86,21 @@ const NavBar = (props) => {
               </Nav.Link>
             );
           })}
-          {/* LOGIN / LOGOUT BUTTONS */}
+
           <Nav.Link
-            style={{ display: thisUser ? 'none' : 'inherit' }}
+            style={{
+              display: thisUser ? 'none' : 'inherit',
+              alignSelf: 'flex-end',
+            }}
             onClick={() => handleLogin()}
           >
             Login
           </Nav.Link>
           <Nav.Link
-            style={{ display: thisUser ? 'inherit' : 'none' }}
+            style={{
+              display: thisUser ? 'inherit' : 'none',
+              alignSelf: 'flex-end',
+            }}
             onClick={() => handleLogoutShow()}
           >
             Logout

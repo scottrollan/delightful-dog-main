@@ -75,7 +75,7 @@ export default function Login(props) {
           }}
         ></div>
         <Button onClick={() => closeError()}>Go Back</Button>
-        <Button onClick={() => sendResetPassword()}>Reset Password</Button>
+        <Button onClick={() => sendResetPassword(email)}>Reset Password</Button>
       </Modal.Body>
     </Modal>
   );
