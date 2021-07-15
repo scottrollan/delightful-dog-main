@@ -13,7 +13,7 @@ import $ from 'jquery';
 import styles from './NavBar.module.css';
 
 const NavBar = (props) => {
-  const thisUser = useContext(UserContext);
+  let thisUser = useContext(UserContext);
   const [loginShow, setLoginShow] = useState(false);
   const [logoutShow, setLogoutShow] = useState(false);
 
@@ -23,6 +23,9 @@ const NavBar = (props) => {
   };
   const handleLogin = () => {
     setLoginShow(true);
+  };
+  const handleLoginShow = () => {
+    setLoginShow(false);
   };
   const handleLogoutShow = () => {
     setLogoutShow(true);
@@ -42,11 +45,9 @@ const NavBar = (props) => {
     >
       <Login
         showLogin={loginShow}
-        handleCloseLogin={() => setLoginShow(false)}
-        handleOpenLogin={() => setLoginShow(false)}
+        handleLoginShow={handleLoginShow}
+        appendHeader=""
       />
-      {/* TODO: PASS THE ABOVE FUNTIONS TO LOGIN & LOGOUT */}
-
       <Logout
         logoutShow={logoutShow}
         handleCloseLogout={() => handleLogoutClose()}

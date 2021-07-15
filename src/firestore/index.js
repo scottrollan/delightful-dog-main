@@ -39,21 +39,25 @@ export const auth = firebaseApp.auth();
 export const signInWithGoogle = async () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   await auth.signInWithPopup(provider);
-  window.location.reload();
+  $('#loginModal').hide();
+  // window.location.reload();
 };
 export const signInWithFacebook = async () => {
   const provider = new firebase.auth.FacebookAuthProvider();
   await auth.signInWithPopup(provider);
-  window.location.reload();
+  $('#loginModal').hide();
+  // window.location.reload();
 };
 export const signInWithTwitter = async () => {
   const provider = new firebase.auth.TwitterAuthProvider();
   await auth.signInWithPopup(provider);
-  window.location.reload();
+  $('#loginModal').hide();
+  // window.location.reload();
 };
 export const signInWithEmail = async (email, password) => {
   await auth.signInWithEmailAndPassword(email, password);
-  window.location.reload();
+  $('#loginModal').hide();
+  // window.location.reload();
 };
 
 export const createUserWithEmail = async (email, password) => {

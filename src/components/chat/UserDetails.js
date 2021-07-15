@@ -1,7 +1,10 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useContext } from 'react';
+import { UserContext } from '../../App';
 import { Form, Button } from 'react-bootstrap';
 
-export default function UserDetails({ setUserComplete }) {
+export default function UserDetails({ setUserComplete, userDetails }) {
+  const thisUser = useContext(UserContext) ?? {};
+
   const reducer = (state, action) => {
     switch (action.type) {
       case 'name':
@@ -9,20 +12,25 @@ export default function UserDetails({ setUserComplete }) {
       case 'email':
         return { ...state, email: action.payload };
       default:
+        console.log(state);
         return state;
     }
   };
 
   const [state, dispatch] = useReducer(reducer, {
-    name: '',
-    email: '',
+    name: thisUser.displayName ?? '',
+    email: thisUser.email ?? '',
+    photoLink: userDetails.photoLink ?? '',
     complete: false,
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     let details = { ...state, complete: true };
-    setUserComplete({ ...details });
+    console.log(
+      `details sent from UserDetails: ${details.name} ${details.email} ${details.photoLink} ${details.complete}`
+    );
+    setUserComplete(details);
   };
 
   const styles = {

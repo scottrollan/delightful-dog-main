@@ -10,6 +10,7 @@
   /* --font-family-sans: -apple-system, BlinkMacSystemFont, sans-serif; */
 
   --color-overlay: rgba(30, 30, 30, 0.2);
+  --color-inactive: rgba(255, 255, 255, 0.6);
   --color-black: #202123;
   --color-dark-gray: #32373e;
   --color-gray: #697a90;

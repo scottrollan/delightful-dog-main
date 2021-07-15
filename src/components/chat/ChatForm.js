@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer } from 'react';
 import ConversationPane from './ConversationPane';
 import { helpChatsCollection, timeStamp, fsArrayUnion } from '../../firestore';
 import { createRandomString } from '../../functions/CreateRandomString';
@@ -30,8 +30,9 @@ export default function ChatForm({ userDetails }) {
     message: '',
     attachedFile: null,
     id: '',
-    userEmail: '',
-    userName: '',
+    userEmail: userDetails.email,
+    userName: userDetails.name,
+    photoLink: userDetails.photoLink,
     initialChat: true,
     conversation: [],
   });
@@ -90,17 +91,6 @@ export default function ChatForm({ userDetails }) {
     $('#messageInput').css('height', `initial`);
   };
 
-  useEffect(() => {
-    const email = userDetails.email;
-    const name = userDetails.name;
-    dispatch({
-      type: 'setUser',
-      payload: {
-        userEmail: email,
-        userName: name,
-      },
-    });
-  }, [userDetails]);
   return (
     <>
       <Modal.Body>
@@ -125,19 +115,8 @@ export default function ChatForm({ userDetails }) {
               ></Form.Control>
             </Form.Group>
             <Button
-              style={{
-                ...styles.flexEndButton,
-                display: state.message === '' ? 'inline-block' : 'none',
-              }}
-            >
-              <i className="fas fa-camera-alt"></i>
-            </Button>
-            <Button
               onClick={() => submitMessage()}
-              style={{
-                ...styles.flexEndButton,
-                display: state.message === '' ? 'none' : 'inline-block',
-              }}
+              style={styles.flexEndButton}
             >
               <i className="fas fa-paper-plane"></i>
             </Button>

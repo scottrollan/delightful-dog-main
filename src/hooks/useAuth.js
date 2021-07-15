@@ -10,9 +10,7 @@ export const useAuth = () => {
         await user;
         console.log(user);
         if (user) {
-          console.log();
           const token = await user.getIdToken();
-
           const newUser = {
             displayName: user.displayName ?? '',
             email: user.email ?? '',

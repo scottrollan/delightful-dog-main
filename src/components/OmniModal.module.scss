@@ -1,0 +1,196 @@
+@import '../styles/custom-properties.css';
+
+.backdrop {
+  display: none;
+  z-index: 97;
+  background-color: var(--color-overlay);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.chatButton {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9998;
+  cursor: pointer;
+}
+.chatButtonRing {
+  border-radius: 50%;
+  border: 3px solid var(--delightful-bright);
+  height: 4rem;
+  width: 4rem;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9997;
+  // cursor: pointer;
+  animation: pulse 4s 6 ease-out;
+}
+.emailUs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--delightful-bright);
+  font-size: 2rem;
+  background-color: var(--color-white);
+  border-radius: 50%;
+  border: 3px solid var(--delightful-bright);
+  height: 4rem;
+  width: 4rem;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9997;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: var(--color-gray);
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.dogHeadset {
+  border-radius: 50%;
+  border: 3px solid var(--delightful-bright);
+  height: 4rem;
+  width: 4rem;
+  transition: all 0.2s ease-in-out;
+}
+.dogHeadset:hover {
+  transform: scale(1.1);
+  // animation: shake 1s;
+}
+
+.modal {
+  position: fixed !important;
+  top: 2rem;
+  right: 4rem;
+  min-width: 600px;
+  max-width: 90vw;
+  display: flex;
+}
+
+.modalHeader {
+  background-color: var(--delightful-neutral);
+}
+.modalTitle {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.3rem;
+}
+.titleIcon {
+  margin-right: 1rem;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+}
+.titleWords {
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+}
+
+.closeButton {
+  height: 3rem;
+  z-index: 9999;
+  cursor: pointer;
+  font-size: 3rem;
+  color: var(--color-white);
+  line-height: 1.1;
+}
+@media screen and (max-width: 680px) {
+  .modal {
+    min-width: 90vw;
+    max-width: 90vw;
+    right: 4vw;
+  }
+  .closeButton {
+    right: 4vw;
+  }
+}
+///// PULSE EFFECT /////
+@mixin keyframe-pulse {
+  from {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  to {
+    transform: scale(2, 2);
+    opacity: 0;
+  }
+}
+@-moz-keyframes pulse {
+  @include keyframe-pulse;
+}
+@-ms-keyframes pulse {
+  @include keyframe-pulse;
+}
+@-o-keyframes pulse {
+  @include keyframe-pulse;
+}
+@-webkit-keyframes pulse {
+  @include keyframe-pulse;
+}
+@keyframes pulse {
+  @include keyframe-pulse;
+}
+
+///// SHAKE EFFECT /////
+@mixin keyframe-shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+@-moz-keyframes shake {
+  @include keyframe-shake;
+}
+@-ms-keyframes shake {
+  @include keyframe-shake;
+}
+@-o-keyframes shake {
+  @include keyframe-shake;
+}
+@-webkit-keyframes shake {
+  @include keyframe-shake;
+}
+@keyframes shake {
+  @include keyframe-shake;
+}

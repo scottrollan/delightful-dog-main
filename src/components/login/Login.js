@@ -25,13 +25,14 @@ export default function Login(props) {
 
   return (
     <Modal
+      id="loginModal"
       show={props.showLogin}
-      onHide={props.handleCloseLogin}
+      onHide={props.handleLoginShow}
       className={styles.modal}
       centered
     >
       <Modal.Header closeButton>
-        <h4 id="loginHeader">Login To Delightful Dog</h4>
+        <h4 id="loginHeader">Login To Delightful Dog{props.appendHeader}</h4>
       </Modal.Header>
       <Modal.Body className={styles.body} id="loginBody">
         <Button
